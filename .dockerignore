@@ -1,0 +1,23 @@
+.venv/
+__pycache__/
+*.pyc
+.git/
+.gitignore
+*.md
+docs/
+scripts/*.m4a
+scripts/*.wav
+Vocal test recording sessions/
+fly.toml
+deploy-gcp.sh
+start.sh
+*.m4a
+*.wav
+*.mp3
+ears/
+assets/
+data/
+demo/
+tests/
+.DS_Store
+requirements.txt

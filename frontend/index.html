@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Koda — Vocal Health Coach</title>
+<style>
+  :root {
+    --bg-deep: #07090f;
+    --bg-card: #0f1119;
+    --border-subtle: rgba(255,255,255,0.05);
+    --border-card: rgba(255,255,255,0.07);
+    --text-primary: #e8eaed;
+    --text-secondary: #8b8fa3;
+    --text-muted: #464b5f;
+    --green: #22c55e;
+    --yellow: #f59e0b;
+    --red: #ef4444;
+    --indigo: #818cf8;
+    --indigo-deep: #6366f1;
+    --radius: 14px;
+    --radius-pill: 100px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: radial-gradient(ellipse at 50% 0%, #10132a 0%, var(--bg-deep) 60%);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+    height: 100dvh;
+  }
+
+  /* ── Animations ────────────────────────────────── */
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  @keyframes breathe { 0%,100%{box-shadow:0 0 0 0 rgba(99,102,241,0.4)} 50%{box-shadow:0 0 0 12px rgba(99,102,241,0)} }
+  @keyframes wave { 0%,100%{height:4px} 50%{height:20px} }
+  @keyframes slideUp { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes shimmerBg { 0%{background-position:-200% center} 100%{background-position:200% center} }
+  @keyframes overlayIn { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes dotPulse { 0%,100%{transform:scale(1);opacity:0.7} 50%{transform:scale(1.8);opacity:0} }
+
+  /* ── Start Overlay ─────────────────────────────── */
+  #start-overlay {
+    position:fixed; inset:0; z-index:100;
+    background:radial-gradient(ellipse at 50% 40%, #12153a 0%, var(--bg-deep) 70%);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .overlay-content {
+    display:flex; flex-direction:column; align-items:center;
+    gap:8px; animation:overlayIn 0.8s ease-out;
+  }
+  .mic-ring {
+    width:110px; height:110px; border-radius:50%;
+    border:1.5px solid rgba(99,102,241,0.2);
+    display:flex; align-items:center; justify-content:center;
+    animation:breathe 3s ease-in-out infinite; margin-bottom:16px;
+  }
+  .overlay-brand {
+    font-size:1.8rem; font-weight:800; letter-spacing:0.35em;
+    text-transform:uppercase; margin-bottom:2px;
+    background:linear-gradient(135deg, var(--text-primary), var(--indigo));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .overlay-tagline { font-size:0.9rem; color:var(--text-secondary); text-align:center; line-height:1.5; max-width:300px; }
+  .overlay-gemini { display:flex; align-items:center; gap:6px; font-size:0.7rem; color:var(--text-muted); letter-spacing:0.06em; margin:14px 0 24px; }
+  .overlay-gemini svg { opacity:0.6; }
+  #start-btn {
+    background:var(--green); color:#000; border:none; border-radius:var(--radius-pill);
+    padding:13px 36px; font-size:0.88rem; font-weight:700; cursor:pointer;
+    letter-spacing:0.04em; transition:transform 0.15s,box-shadow 0.3s;
+    box-shadow:0 0 30px rgba(34,197,94,0.2);
+  }
+  #start-btn:hover { transform:scale(1.03); }
+  #start-btn:active { transform:scale(0.98); }
+  #watch-btn {
+    background:none; color:var(--text-secondary); border:1px solid rgba(255,255,255,0.1);
+    border-radius:var(--radius-pill); padding:9px 24px; font-size:0.78rem;
+    cursor:pointer; transition:border-color 0.2s; margin-top:8px;
+  }
+  #watch-btn:hover { border-color:rgba(255,255,255,0.2); color:var(--text-primary); }
+  #start-error { color:var(--red); font-size:0.8rem; display:none; margin-top:10px; }
+
+  /* ── App Shell (viewport-locked) ───────────────── */
+  .app {
+    max-width:720px; margin:0 auto;
+    height:100dvh; display:flex; flex-direction:column;
+    overflow:hidden;
+  }
+
+  .card {
+    background:var(--bg-card); border:1px solid var(--border-card);
+    border-radius:var(--radius); transition:border-color 0.5s,box-shadow 0.5s;
+  }
+  .card-label {
+    font-size:0.6rem; text-transform:uppercase;
+    letter-spacing:0.14em; color:var(--text-muted); font-weight:600;
+  }
+
+  /* ── Header ────────────────────────────────────── */
+  header {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:10px 16px; border-bottom:1px solid var(--border-subtle);
+    flex-shrink:0;
+  }
+  .header-brand { display:flex; align-items:center; gap:8px; }
+  .logo {
+    font-size:0.85rem; font-weight:800; letter-spacing:0.3em; text-transform:uppercase;
+    background:linear-gradient(135deg, var(--text-primary), var(--indigo));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  }
+  .status-group { display:flex; align-items:center; gap:6px; }
+  #status-dot {
+    width:6px; height:6px; border-radius:50%; background:#333;
+    transition:all 0.3s; position:relative;
+  }
+  #status-dot.live { background:var(--green); box-shadow:0 0 6px var(--green); }
+  #status-dot.streaming { background:var(--indigo); box-shadow:0 0 6px var(--indigo); animation:pulse 2s ease-in-out infinite; }
+  #status-text { font-size:0.65rem; color:var(--text-muted); }
+  .header-controls { display:flex; align-items:center; gap:6px; }
+  #phrase-pill {
+    font-size:0.55rem; padding:2px 8px; border-radius:var(--radius-pill);
+    text-transform:uppercase; letter-spacing:0.1em;
+    background:rgba(255,255,255,0.03); color:var(--text-muted); transition:all 0.3s;
+  }
+  #phrase-pill.singing { color:var(--green); background:rgba(34,197,94,0.1); }
+  #breathy-pill {
+    padding:2px 8px; border-radius:var(--radius-pill); font-size:0.55rem; font-weight:600;
+    color:#38bdf8; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.2);
+    display:none;
+  }
+  #mic-btn {
+    background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
+    color:var(--text-muted); padding:10px 14px; border-radius:var(--radius-pill);
+    font-size:0.65rem; cursor:pointer; transition:all 0.2s; font-weight:500;
+    min-height:44px; display:flex; align-items:center;
+  }
+  #mic-btn:hover { background:rgba(255,255,255,0.07); }
+  #mic-btn.active { background:rgba(239,68,68,0.1); border-color:rgba(239,68,68,0.3); color:var(--red); }
+
+  /* ── Main Content ──────────────────────────────── */
+  main {
+    flex:1; display:flex; flex-direction:column;
+    gap:8px; padding:10px 12px;
+    min-height:0; /* critical for flex shrink */
+  }
+
+  /* ── Top Row: Strain + Pitch ───────────────────── */
+  .top-row {
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:8px; flex-shrink:0;
+  }
+
+  /* Strain */
+  .strain-card {
+    display:flex; flex-direction:column; align-items:center;
+    padding:12px 10px 10px; gap:0;
+    overflow:visible;  /* let canvas glow extend beyond card */
+  }
+  .strain-card .card-label { margin-bottom:6px; }
+  .strain-gauge { position:relative; width:150px; height:150px; }
+  #strain-canvas { display:block; width:150px; height:150px; }
+  .strain-readout {
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding-top:4px;
+  }
+  #strain-value {
+    font-family:ui-monospace,'SF Mono','Cascadia Code',Menlo,monospace;
+    font-size:2.2rem; font-weight:300; font-variant-numeric:tabular-nums;
+    letter-spacing:-0.02em; transition:color 0.4s; line-height:1;
+  }
+  #strain-zone {
+    font-size:0.6rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+    padding:3px 12px; border-radius:var(--radius-pill); transition:all 0.4s; margin-top:4px;
+    background:rgba(255,255,255,0.04); color:var(--text-muted);
+  }
+  #strain-zone.green  { color:var(--green); background:rgba(34,197,94,0.1); }
+  #strain-zone.yellow { color:var(--yellow); background:rgba(245,158,11,0.1); }
+  #strain-zone.red    { color:var(--red); background:rgba(239,68,68,0.1); }
+  #strain-zone.idle   { color:var(--text-muted); background:rgba(255,255,255,0.04); }
+
+  /* Pitch */
+  .pitch-card {
+    display:flex; flex-direction:column; align-items:center;
+    padding:12px 10px 10px; gap:4px;
+  }
+  #pitch-note-display {
+    font-family:ui-monospace,'SF Mono','Cascadia Code',Menlo,monospace;
+    font-size:2.6rem; font-weight:300; letter-spacing:-0.02em;
+    line-height:1; margin:2px 0; min-width:50px; text-align:center;
+  }
+  #pitch-canvas { display:block; width:100%; }
+  #pitch-cents { font-size:0.7rem; color:var(--text-secondary); font-variant-numeric:tabular-nums; }
+  #vibrato-badge {
+    font-size:0.6rem; padding:2px 10px; border-radius:var(--radius-pill);
+    background:rgba(255,255,255,0.04); color:var(--text-muted);
+    letter-spacing:0.1em; font-weight:600;
+    transition:color 0.3s,background 0.3s; min-width:76px; text-align:center;
+  }
+  #vibrato-badge.active {
+    color:var(--indigo);
+    background:linear-gradient(90deg,rgba(99,102,241,0.1) 0%,rgba(129,140,248,0.22) 50%,rgba(99,102,241,0.1) 100%);
+    background-size:200% 100%; animation:shimmerBg 2.5s ease-in-out infinite;
+  }
+
+  /* ── Mid Strip: Session + Range ────────────────── */
+  .mid-strip {
+    display:grid; grid-template-columns:1fr 1fr; gap:8px;
+    flex-shrink:0;
+  }
+  .session-card { padding:8px 14px 10px; }
+  .session-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
+  #session-stats { font-size:0.6rem; color:var(--text-muted); font-variant-numeric:tabular-nums; }
+  #session-canvas { display:block; width:100%; }
+
+  .range-card { padding:8px 14px 10px; display:flex; flex-direction:column; }
+  .range-card .card-label { margin-bottom:4px; }
+  #range-canvas { display:block; width:100%; border-radius:3px; flex:1; }
+
+  /* ── Koda Panel (HERO — fills remaining space) ─── */
+  .koda-panel {
+    flex:1; min-height:0;
+    border:1px solid var(--border-card);
+    background:linear-gradient(135deg, var(--bg-card) 0%, rgba(99,102,241,0.02) 100%);
+    padding:14px 20px 12px;
+    display:flex; flex-direction:column;
+    transition:border-color 0.5s,box-shadow 0.5s,background 0.5s,transform 0.3s;
+    position:relative; border-radius:var(--radius);
+  }
+  .koda-panel:has(#coach-text.active) {
+    border-color:rgba(99,102,241,0.2);
+    box-shadow:0 0 40px -15px rgba(99,102,241,0.12), inset 0 0 20px -10px rgba(99,102,241,0.04);
+    background:linear-gradient(135deg, var(--bg-card) 0%, rgba(99,102,241,0.05) 100%);
+  }
+  /* Card elevation pulse on new feedback */
+  .koda-panel.feedback-pulse {
+    transform:scale(1.008);
+    box-shadow:0 4px 30px -10px rgba(99,102,241,0.2), inset 0 0 20px -10px rgba(99,102,241,0.06);
+  }
+
+  .koda-header { display:flex; align-items:center; gap:10px; margin-bottom:8px; flex-shrink:0; }
+  .koda-avatar {
+    width:32px; height:32px; border-radius:9px;
+    background:linear-gradient(135deg, var(--indigo-deep), var(--indigo));
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.75rem; font-weight:700; color:#fff; flex-shrink:0;
+    transition:transform 0.3s ease-out;
+  }
+  /* Avatar micro-expressions */
+  .koda-avatar.pulse-positive { transform:scale(1.15); }
+  .koda-avatar.pulse-alert { transform:scale(0.9); }
+
+  .koda-title { display:flex; flex-direction:column; gap:1px; }
+  .koda-label { font-size:0.85rem; font-weight:600; color:var(--text-primary); line-height:1; }
+  .koda-subtitle {
+    display:flex; align-items:center; gap:4px;
+    font-size:0.6rem; color:var(--indigo); letter-spacing:0.04em; line-height:1;
+    opacity:0.85;
+  }
+  .koda-subtitle svg { flex-shrink:0; }
+  .koda-indicator {
+    width:7px; height:7px; border-radius:50%; background:var(--text-muted);
+    transition:all 0.5s; position:relative;
+  }
+  /* Dot pulses when coach text is active (text or voice) */
+  .koda-panel:has(#coach-text.active) .koda-indicator {
+    background:var(--indigo); box-shadow:0 0 8px var(--indigo);
+  }
+  /* Expanding ring only when Gemini is SPEAKING audio */
+  .koda-panel:has(#coach-text.speaking) .koda-indicator::after {
+    content:''; position:absolute; inset:-3px; border-radius:50%;
+    border:1.5px solid var(--indigo); animation:dotPulse 1.5s ease-out infinite;
+  }
+  .koda-wave { display:flex; align-items:center; gap:2.5px; height:22px; margin-left:auto; }
+  .koda-wave span {
+    display:block; width:3px; height:4px; background:var(--indigo);
+    border-radius:2px; opacity:0.25; transition:opacity 0.4s;
+    animation:wave 1.2s ease-in-out infinite; animation-play-state:paused;
+  }
+  .koda-wave span:nth-child(1){animation-delay:0s}
+  .koda-wave span:nth-child(2){animation-delay:0.15s}
+  .koda-wave span:nth-child(3){animation-delay:0.3s}
+  .koda-wave span:nth-child(4){animation-delay:0.45s}
+  .koda-wave span:nth-child(5){animation-delay:0.6s}
+  /* Wave bars only animate when Gemini is SPEAKING audio */
+  .koda-panel:has(#coach-text.speaking) .koda-wave span { animation-play-state:running; opacity:0.8; }
+
+  /* ── Phase Indicator Bar ─────────────────────────── */
+  .koda-phase {
+    height:3px; border-radius:2px; margin-bottom:10px; flex-shrink:0;
+    background:rgba(255,255,255,0.04); overflow:hidden; position:relative;
+  }
+  .koda-phase-fill {
+    position:absolute; inset:0; border-radius:2px;
+    background:var(--indigo); opacity:0; transition:opacity 0.4s;
+  }
+  /* Listening state: subtle traveling dot */
+  .koda-phase.listening .koda-phase-fill {
+    opacity:1;
+    background:linear-gradient(90deg, transparent 0%, rgba(99,102,241,0.4) 50%, transparent 100%);
+    background-size:200% 100%;
+    animation:phaseListening 2s ease-in-out infinite;
+  }
+  /* Speaking state: bright animated bar */
+  .koda-phase.speaking .koda-phase-fill {
+    opacity:1;
+    background:linear-gradient(90deg, var(--indigo-deep), var(--indigo), #a78bfa, var(--indigo), var(--indigo-deep));
+    background-size:300% 100%;
+    animation:phaseSpeaking 1.5s ease-in-out infinite;
+  }
+  @keyframes phaseListening { 0%{background-position:200% center} 100%{background-position:-200% center} }
+  @keyframes phaseSpeaking { 0%{background-position:0% center} 50%{background-position:100% center} 100%{background-position:0% center} }
+
+  .koda-transcript {
+    flex:1; display:flex; align-items:center;
+    min-height:0; overflow-y:auto;
+    padding:2px 0;
+  }
+  #coach-text {
+    font-size:0.95rem; color:var(--text-muted); line-height:1.65;
+    font-style:italic; transition:color 0.4s,opacity 0.4s;
+    letter-spacing:0.01em;
+  }
+  #coach-text.active {
+    color:var(--text-primary); font-style:normal;
+  }
+  #coach-text.speaking {
+    color:#c4b5fd;
+  }
+  /* Streaming text cursor */
+  #coach-text.streaming::after {
+    content:''; display:inline-block; width:2px; height:1em;
+    background:var(--indigo); margin-left:3px; vertical-align:text-bottom;
+    animation:cursorBlink 0.8s step-end infinite;
+  }
+  @keyframes cursorBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+  /* Word fade-in */
+  #coach-text .word { opacity:0; display:inline; animation:wordFade 0.2s ease-out forwards; }
+  @keyframes wordFade { from{opacity:0;transform:translateY(2px)} to{opacity:1;transform:translateY(0)} }
+
+  .koda-footer {
+    flex-shrink:0; display:flex; align-items:center; gap:6px;
+    padding-top:8px; margin-top:auto;
+  }
+  .gemini-badge {
+    display:flex; align-items:center; gap:5px;
+    font-size:0.6rem; color:var(--text-muted); letter-spacing:0.06em; opacity:0.6;
+  }
+  .gemini-badge svg { opacity:0.5; }
+
+  /* ── Hidden (JS compat) ────────────────────────── */
+  .dims-hidden { display:none !important; }
+
+  /* ── Mobile ────────────────────────────────────── */
+  @media (max-width:480px) {
+    #strain-value { font-size:1.8rem; }
+    #pitch-note-display { font-size:2rem; }
+    .strain-gauge { width:120px; height:120px; }
+    #strain-canvas { width:120px; height:120px; }
+    main { padding:8px 8px; gap:6px; }
+    header { padding:8px 12px; }
+    .strain-card { padding:10px 8px 8px; }
+    .pitch-card { padding:10px 8px 8px; }
+    .koda-panel { padding:12px 14px; }
+    #coach-text { font-size:0.9rem; }
+    .mid-strip { grid-template-columns:1fr; }
+  }
+
+  /* Very short screens — compact further */
+  @media (max-height:700px) {
+    .strain-gauge { width:120px; height:120px; }
+    #strain-canvas { width:120px; height:120px; }
+    #strain-value { font-size:1.8rem; }
+    #pitch-note-display { font-size:2rem; }
+    .strain-card .card-label, .pitch-card .card-label { display:none; }
+    .session-card, .range-card { padding:6px 10px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Start Overlay ────────────────────────────────────────────────────────── -->
+<div id="start-overlay">
+  <div class="overlay-content">
+    <div class="mic-ring">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="1" width="6" height="11" rx="3"/>
+        <path d="M19 10v1a7 7 0 0 1-14 0v-1"/>
+        <line x1="12" y1="18" x2="12" y2="22"/>
+        <line x1="9" y1="22" x2="15" y2="22"/>
+      </svg>
+    </div>
+    <div class="overlay-brand">Koda</div>
+    <p class="overlay-tagline">Real-time vocal health monitoring.<br>AI-powered coaching while you sing.</p>
+    <div class="overlay-gemini">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C8.5 4.5 11.5 7.5 16 8C11.5 8.5 8.5 11.5 8 16C7.5 11.5 4.5 8.5 0 8C4.5 7.5 7.5 4.5 8 0Z"/></svg>
+      Powered by Gemini Live
+    </div>
+    <button id="start-btn">Enable Microphone</button>
+    <button id="watch-btn">Watch Only</button>
+    <p id="start-error"></p>
+  </div>
+</div>
+
+<!-- ── App ──────────────────────────────────────────────────────────────────── -->
+<div class="app">
+
+  <header>
+    <div class="header-brand">
+      <span class="logo">Koda</span>
+      <div class="status-group">
+        <span id="status-dot"></span>
+        <span id="status-text">Not connected</span>
+      </div>
+    </div>
+    <div class="header-controls">
+      <div id="phrase-pill">IDLE</div>
+      <div id="breathy-pill">BREATHY</div>
+      <button id="mic-btn">MIC OFF</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Top Row: Strain + Pitch side by side -->
+    <div class="top-row">
+      <section class="card strain-card">
+        <div class="card-label">Vocal Strain</div>
+        <div class="strain-gauge">
+          <canvas id="strain-canvas" width="150" height="150"></canvas>
+          <div class="strain-readout">
+            <div id="strain-value">&mdash;</div>
+            <div id="strain-zone">IDLE</div>
+          </div>
+        </div>
+      </section>
+      <section class="card pitch-card">
+        <div class="card-label">Pitch</div>
+        <div id="pitch-note-display">&mdash;</div>
+        <canvas id="pitch-canvas" width="300" height="80"></canvas>
+        <div id="pitch-cents">&mdash;</div>
+        <div id="vibrato-badge">VIBRATO</div>
+      </section>
+    </div>
+
+    <!-- Mid Strip: Session Graph + Range Map -->
+    <div class="mid-strip">
+      <section class="card session-card">
+        <div class="session-header">
+          <span class="card-label">Session</span>
+          <span id="session-stats"></span>
+        </div>
+        <canvas id="session-canvas" height="50"></canvas>
+      </section>
+      <section class="card range-card">
+        <div class="card-label">Vocal Range</div>
+        <canvas id="range-canvas" height="50"></canvas>
+      </section>
+    </div>
+
+    <!-- Koda Coaching Panel — fills remaining screen -->
+    <section class="card koda-panel">
+      <div class="koda-header">
+        <div class="koda-avatar">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#fff"><path d="M8 0C8.5 4.5 11.5 7.5 16 8C11.5 8.5 8.5 11.5 8 16C7.5 11.5 4.5 8.5 0 8C4.5 7.5 7.5 4.5 8 0Z"/></svg>
+        </div>
+        <div class="koda-title">
+          <div class="koda-label">Koda</div>
+          <div class="koda-subtitle">
+            <svg width="9" height="9" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C8.5 4.5 11.5 7.5 16 8C11.5 8.5 8.5 11.5 8 16C7.5 11.5 4.5 8.5 0 8C4.5 7.5 7.5 4.5 8 0Z"/></svg>
+            Gemini Live Vocal Coach
+          </div>
+        </div>
+        <div class="koda-indicator"></div>
+        <div class="koda-wave">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="koda-phase" id="koda-phase"><div class="koda-phase-fill"></div></div>
+      <div class="koda-transcript">
+        <span id="coach-text">Listening for your voice…</span>
+      </div>
+      <div class="koda-footer">
+        <div class="gemini-badge">
+          <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C8.5 4.5 11.5 7.5 16 8C11.5 8.5 8.5 11.5 8 16C7.5 11.5 4.5 8.5 0 8C4.5 7.5 7.5 4.5 8 0Z"/></svg>
+          Powered by Gemini Live
+        </div>
+      </div>
+    </section>
+  </main>
+
+</div>
+
+<!-- Hidden dims for JS compatibility -->
+<div class="dims-hidden">
+  <div class="dim-bar-fill" id="bar-tonos"></div>
+  <span class="dim-val" id="val-tonos">&mdash;</span>
+  <div class="dim-bar-fill" id="bar-thymos"></div>
+  <span class="dim-val" id="val-thymos">&mdash;</span>
+  <div class="dim-bar-fill" id="bar-hnr"></div>
+  <span class="dim-val" id="val-hnr">&mdash;</span>
+  <div class="dim-bar-fill" id="bar-shimmer"></div>
+  <span class="dim-val" id="val-shimmer">&mdash;</span>
+</div>
+
+<script>
+// ─── WebSocket + Mic ──────────────────────────────────────────────────────────
+
+const WS_URL = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws`;
+let ws, audioContext, micStream, processor, reconnectTimer;
+let micActive = false;
+let strainHistory = [];
+let _firstFrameReceived = false;
+
+// ─── Startup Timing Telemetry ────────────────────────────────────────────────
+const _startupLog = [];
+const _t0 = performance.now();
+function _slog(msg) {
+  const t = ((performance.now() - _t0) / 1000).toFixed(2);
+  _startupLog.push(`${t}s: ${msg}`);
+  console.log(`[STARTUP] ${t}s: ${msg}`);
+}
+
+document.getElementById('start-btn').onclick = async () => {
+  _slog('Start button clicked');
+  try {
+    _getAudioCtx();
+    _slog('AudioContext created');
+    // Start WebSocket connection in parallel with mic permission — saves ~500ms
+    connectWS();
+    _slog('connectWS() called');
+    await startMic();
+    _slog('startMic() resolved — mic is active');
+    document.getElementById('start-overlay').style.display = 'none';
+    _slog('Overlay dismissed');
+    // Re-measure canvases now that layout is visible
+    syncStrainCanvas(); resizeGraph(); drawRangeMapper();
+    setStatus('streaming', 'Connecting…');
+    document.getElementById('strain-zone').textContent = 'CONNECTING';
+    document.getElementById('strain-zone').className = '';
+    _startConnectArc();
+    _slog('Waiting for first ears_frame...');
+  } catch (e) {
+    _slog('ERROR: ' + e.message);
+    document.getElementById('start-error').textContent = 'Mic error: ' + e.message;
+    document.getElementById('start-error').style.display = 'block';
+  }
+};
+
+document.getElementById('watch-btn').onclick = () => {
+  document.getElementById('start-overlay').style.display = 'none';
+  resizeGraph(); drawRangeMapper();
+  _getAudioCtx();
+  connectWS();
+  setStatus('live', 'WATCHING');
+};
+
+async function startMic() {
+  micStream = await navigator.mediaDevices.getUserMedia({
+    audio: { sampleRate: 44100, channelCount: 1, echoCancellation: false, noiseSuppression: false, autoGainControl: false }
+  });
+  audioContext = new AudioContext({ sampleRate: 44100 });
+  const source = audioContext.createMediaStreamSource(micStream);
+  processor = audioContext.createScriptProcessor(4096, 1, 1);
+  processor.onaudioprocess = (e) => {
+    if (ws && ws.readyState === WebSocket.OPEN && micActive) {
+      const samples = e.inputBuffer.getChannelData(0);
+      ws.send(samples.buffer);
+    }
+  };
+  source.connect(processor);
+  processor.connect(audioContext.destination);
+  micActive = true;
+  updateMicBtn(true);
+}
+
+function connectWS() {
+  _slog('Creating WebSocket: ' + WS_URL);
+  ws = new WebSocket(WS_URL);
+  ws.binaryType = 'arraybuffer';
+  ws.onopen = () => {
+    _slog('WebSocket OPEN');
+    setStatus('live', 'LIVE');
+    clearTimeout(reconnectTimer);
+    setInterval(() => ws.readyState === WebSocket.OPEN && ws.send(JSON.stringify({type:'ping'})), 20000);
+  };
+  ws.onmessage = e => {
+    if (typeof e.data === 'string') handleEvent(JSON.parse(e.data));
+  };
+  ws.onclose = () => {
+    setStatus('', 'Reconnecting…');
+    reconnectTimer = setTimeout(connectWS, 2000);
+  };
+}
+
+document.getElementById('mic-btn').onclick = () => {
+  if (!micStream) return;
+  micActive = !micActive;
+  updateMicBtn(micActive);
+  if (!micActive) {
+    drawStrainMeter(0, 'idle');
+    document.getElementById('strain-value').textContent = '—';
+    document.getElementById('strain-zone').className = 'idle';
+    document.getElementById('strain-zone').textContent = 'IDLE';
+  }
+};
+
+function updateMicBtn(on) {
+  const btn = document.getElementById('mic-btn');
+  btn.textContent = on ? 'MIC ON' : 'MIC OFF';
+  btn.className = on ? 'active' : '';
+}
+
+function setStatus(cls, text) {
+  const dot = document.getElementById('status-dot');
+  dot.className = cls;
+  document.getElementById('status-text').textContent = text;
+}
+
+// ─── Event handling ──────────────────────────────────────────────────────────
+
+let _pendingEarsFrame = null;
+let _pendingSessionUpdate = null;
+let _pendingRangeUpdate = null;
+let _rafPending = false;
+
+function _flushThrottled() {
+  _rafPending = false;
+  if (_pendingEarsFrame) {
+    const msg = _pendingEarsFrame; _pendingEarsFrame = null;
+    updateStrain(msg);
+    updatePitch(msg);
+    _currentNote = msg.pitch_note || '—';
+  }
+  if (_pendingSessionUpdate) {
+    const msg = _pendingSessionUpdate; _pendingSessionUpdate = null;
+    strainHistory = msg.strain_history;
+    drawGraph();
+  }
+  if (_pendingRangeUpdate) {
+    const notes = _pendingRangeUpdate; _pendingRangeUpdate = null;
+    updateRangeMapper(notes);
+  }
+}
+
+function _scheduleFlush() {
+  if (!_rafPending) { _rafPending = true; requestAnimationFrame(_flushThrottled); }
+}
+
+function handleEvent(msg) {
+  switch (msg.type) {
+    case 'ears_frame':
+      if (!_firstFrameReceived) {
+        _firstFrameReceived = true;
+        _slog('FIRST ears_frame received — STREAMING');
+        _setPhase('listening');
+      }
+      _pendingEarsFrame = msg;
+      _scheduleFlush();
+      break;
+    case 'range_update':
+      _pendingRangeUpdate = msg.notes;
+      _scheduleFlush();
+      break;
+    case 'session_update':
+      _pendingSessionUpdate = msg;
+      _scheduleFlush();
+      break;
+    case 'phrase_start':
+      document.getElementById('phrase-pill').textContent = 'SINGING';
+      document.getElementById('phrase-pill').classList.add('singing');
+      // Don't cut off Gemini audio — let it finish speaking naturally.
+      // Singers often resume before Gemini finishes a short coaching phrase.
+      break;
+    case 'phrase_end':
+      showCoach(msg);
+      if (msg.was_breathy) showBreathy();
+      break;
+    case 'visual_cue':      showVisualCue(msg); break;
+    case 'gemini_coaching': showGeminiCoach(msg); break;
+    case 'song_praise':     showGeminiCoach(msg); break;
+  }
+}
+
+function showBreathy() {
+  const pill = document.getElementById('breathy-pill');
+  pill.style.display = 'block';
+  setTimeout(() => { pill.style.display = 'none'; }, 8000);
+}
+
+// ─── Koda panel helpers ───────────────────────────────────────────────────────
+
+function _setPhase(state) {
+  const phase = document.getElementById('koda-phase');
+  phase.className = 'koda-phase' + (state !== 'idle' ? ' ' + state : '');
+}
+
+function _avatarPulse(type) {
+  const av = document.querySelector('.koda-avatar');
+  const cls = type === 'positive' ? 'pulse-positive' : 'pulse-alert';
+  av.classList.add(cls);
+  setTimeout(() => av.classList.remove(cls), 350);
+}
+
+function _cardPulse() {
+  const panel = document.querySelector('.koda-panel');
+  panel.classList.add('feedback-pulse');
+  setTimeout(() => panel.classList.remove('feedback-pulse'), 400);
+}
+
+let _streamTimers = [];
+function _streamText(el, text, opts) {
+  _streamTimers.forEach(clearTimeout);
+  _streamTimers = [];
+  // Clear existing content safely
+  while (el.firstChild) el.removeChild(el.firstChild);
+  el.classList.add('streaming');
+  const words = text.split(' ');
+  const delay = (opts && opts.delay) || 60;
+  words.forEach((word, i) => {
+    const tid = setTimeout(() => {
+      const span = document.createElement('span');
+      span.className = 'word';
+      span.textContent = (i > 0 ? ' ' : '') + word;
+      el.appendChild(span);
+    }, i * delay);
+    _streamTimers.push(tid);
+  });
+  const endTid = setTimeout(() => el.classList.remove('streaming'), words.length * delay + 300);
+  _streamTimers.push(endTid);
+}
+
+function _resetCoachText(delayMs) {
+  return setTimeout(() => {
+    const el = document.getElementById('coach-text');
+    _streamTimers.forEach(clearTimeout);
+    _streamTimers = [];
+    el.textContent = 'Listening for your voice…';
+    el.classList.remove('active', 'speaking', 'streaming');
+    el.style.color = '';
+    _setPhase('listening');
+  }, delayMs);
+}
+
+function showVisualCue(msg) {
+  const el = document.getElementById('coach-text');
+  _setPhase('speaking');
+  _avatarPulse(msg.zone === 'red' ? 'alert' : 'positive');
+  _cardPulse();
+  el.classList.add('active');
+  el.style.color = '#f59e0b';
+  _streamText(el, msg.text);
+  _resetCoachText(7000);
+}
+
+function showGeminiCoach(msg) {
+  console.log('[Koda] Gemini coaching:', msg.zone, msg.transcript?.substring(0, 60), 'hasAudio:', !!msg.audio_b64);
+  const el = document.getElementById('coach-text');
+  _setPhase('speaking');
+  _cardPulse();
+  if (msg.zone === 'red') _avatarPulse('alert');
+  else _avatarPulse('positive');
+  if (msg.transcript) {
+    el.classList.add('active');
+    _streamText(el, msg.transcript);
+    _resetCoachText(12000);
+  }
+  if (msg.audio_b64) {
+    el.classList.add('speaking');
+    playPCM16Base64(msg.audio_b64, 24000);
+  } else {
+    console.warn('[Koda] Gemini coaching arrived WITHOUT audio data');
+  }
+}
+
+let _sharedAudioCtx = null;
+let _kodaAudioSrc = null;
+
+function _getAudioCtx() {
+  if (!_sharedAudioCtx || _sharedAudioCtx.state === 'closed') {
+    _sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (_sharedAudioCtx.state === 'suspended') {
+    _sharedAudioCtx.resume();
+  }
+  return _sharedAudioCtx;
+}
+
+function stopKodaAudio() {
+  if (_kodaAudioSrc) {
+    try { _kodaAudioSrc.stop(); } catch(e) {}
+    _kodaAudioSrc = null;
+    document.getElementById('coach-text').classList.remove('speaking');
+  }
+}
+
+function playPCM16Base64(b64, sampleRate) {
+  stopKodaAudio();
+  try {
+    const binary = atob(b64);
+    const int16 = new Int16Array(binary.length / 2);
+    for (let i = 0; i < int16.length; i++) {
+      int16[i] = binary.charCodeAt(i * 2) | (binary.charCodeAt(i * 2 + 1) << 8);
+    }
+    const float32 = new Float32Array(int16.length);
+    for (let i = 0; i < int16.length; i++) float32[i] = int16[i] / 32768.0;
+    const ctx = _getAudioCtx();
+    const buf = ctx.createBuffer(1, float32.length, sampleRate);
+    buf.copyToChannel(float32, 0);
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    src.connect(ctx.destination);
+    src.onended = () => { _kodaAudioSrc = null; document.getElementById('coach-text').classList.remove('speaking'); };
+    _kodaAudioSrc = src;
+    src.start();
+  } catch(e) { console.warn('Audio playback error:', e); }
+}
+
+// ─── Strain panel ─────────────────────────────────────────────────────────────
+
+const strainCanvas = document.getElementById('strain-canvas');
+const sCtx = strainCanvas.getContext('2d');
+
+// Sync canvas backing store to match CSS display size (prevents Safari scaling bugs)
+function syncStrainCanvas() {
+  const el = document.querySelector('.strain-gauge');
+  const sz = el ? el.clientWidth : 150;
+  if (strainCanvas.width !== sz || strainCanvas.height !== sz) {
+    strainCanvas.width = sz;
+    strainCanvas.height = sz;
+  }
+}
+syncStrainCanvas();
+window.addEventListener('resize', () => { syncStrainCanvas(); drawStrainMeter(0, 'idle'); });
+
+const COLORS = { green: '#22c55e', yellow: '#f59e0b', red: '#ef4444', idle: '#2d3347' };
+const STRAIN_GREEN  = 0.40;
+const STRAIN_YELLOW = 0.60;
+const TRANSITION_W  = 0.08;
+
+function strainColor(score) {
+  if (score <= 0) return '#2d3347';
+  function lerp(a, b, t) { return Math.round(a + (b - a) * Math.max(0, Math.min(1, t))); }
+  function rgb(r, g, b) { return `rgb(${r},${g},${b})`; }
+  const G = [34, 197, 94], Y = [245, 158, 11], R = [239, 68, 68];
+  if (score >= STRAIN_YELLOW) {
+    const t = Math.min(1, (score - STRAIN_YELLOW) / 0.2);
+    const boost = lerp(0, 20, t);
+    return rgb(R[0], Math.max(0, R[1] - boost), Math.max(0, R[2] - boost));
+  }
+  const yelTransStart = STRAIN_YELLOW - TRANSITION_W;
+  if (score >= yelTransStart) {
+    const t = (score - yelTransStart) / TRANSITION_W;
+    return rgb(lerp(Y[0], R[0], t), lerp(Y[1], R[1], t), lerp(Y[2], R[2], t));
+  }
+  if (score >= STRAIN_GREEN) return rgb(Y[0], Y[1], Y[2]);
+  const grnTransStart = STRAIN_GREEN - TRANSITION_W;
+  if (score >= grnTransStart) {
+    const t = (score - grnTransStart) / TRANSITION_W;
+    return rgb(lerp(G[0], Y[0], t), lerp(G[1], Y[1], t), lerp(G[2], Y[2], t));
+  }
+  return rgb(G[0], G[1], G[2]);
+}
+
+function drawStrainMeter(score, zone) {
+  const W = strainCanvas.width, H = strainCanvas.height;
+  const cx = W/2, cy = H/2, r = W * 0.395;
+  const lw = W * 0.075;
+  sCtx.clearRect(0, 0, W, H);
+  sCtx.beginPath(); sCtx.arc(cx, cy, r, Math.PI*0.75, Math.PI*2.25);
+  sCtx.strokeStyle = '#1a1d2e'; sCtx.lineWidth = lw; sCtx.lineCap = 'round'; sCtx.stroke();
+  if (zone !== 'idle' && score > 0) {
+    const angle = Math.PI*0.75 + score * Math.PI*1.5;
+    const gradColor = strainColor(score);
+    sCtx.beginPath(); sCtx.arc(cx, cy, r, Math.PI*0.75, angle);
+    sCtx.strokeStyle = gradColor; sCtx.lineWidth = lw; sCtx.lineCap = 'round';
+    sCtx.shadowColor = gradColor; sCtx.shadowBlur = 28;
+    sCtx.stroke(); sCtx.shadowBlur = 0;
+  }
+}
+
+// ─── Connection loading arc ─────────────────────────────────────────────────
+
+let _connectArcId = 0;
+function _startConnectArc() {
+  const startT = performance.now();
+  document.getElementById('strain-value').textContent = '';
+  function tick() {
+    if (_firstFrameReceived) {
+      // Instant transition — never hold back actual speed
+      sCtx.shadowBlur = 0;
+      return;
+    }
+    const elapsed = (performance.now() - startT) / 1000;
+    const W = strainCanvas.width, H = strainCanvas.height;
+    const cx = W/2, cy = H/2, r = W*0.395;
+    const lw = W*0.075;
+    sCtx.clearRect(0, 0, W, H);
+    // Background track
+    sCtx.beginPath(); sCtx.arc(cx, cy, r, Math.PI*0.75, Math.PI*2.25);
+    sCtx.strokeStyle = '#1a1d2e'; sCtx.lineWidth = lw; sCtx.lineCap = 'round'; sCtx.stroke();
+    // Spinning arc
+    const spin = elapsed * 2.5;  // rotation speed
+    const arcLen = Math.PI * 0.6;  // arc length
+    sCtx.beginPath();
+    sCtx.arc(cx, cy, r, Math.PI*0.75 + spin, Math.PI*0.75 + spin + arcLen);
+    sCtx.strokeStyle = 'rgba(99,102,241,0.5)'; sCtx.lineWidth = lw; sCtx.lineCap = 'round';
+    sCtx.shadowColor = 'rgba(99,102,241,0.3)'; sCtx.shadowBlur = 12;
+    sCtx.stroke(); sCtx.shadowBlur = 0;
+    _connectArcId = requestAnimationFrame(tick);
+  }
+  tick();
+}
+
+// ─── Smooth strain animation (rAF interpolation) ────────────────────────────
+let _strainTarget = 0;
+let _strainCurrent = 0;
+let _strainZone = 'idle';
+let _strainAnimating = false;
+
+function _tickStrain() {
+  const diff = _strainTarget - _strainCurrent;
+  if (Math.abs(diff) < 0.002) {
+    _strainCurrent = _strainTarget;
+    _strainAnimating = false;
+  } else {
+    _strainCurrent += diff * 0.18;  // smooth chase factor
+    requestAnimationFrame(_tickStrain);
+  }
+  drawStrainMeter(_strainCurrent, _strainZone);
+}
+
+function animateStrain(target, zone) {
+  _strainTarget = target;
+  _strainZone = zone;
+  if (!_strainAnimating) {
+    _strainAnimating = true;
+    requestAnimationFrame(_tickStrain);
+  }
+}
+
+const ZONE_HYSTERESIS = 0.04;
+let _displayedZone = 'idle';
+let _lastStrainColor = '';
+
+function _hysteresisZone(score, backendZone, active) {
+  if (!active) { _displayedZone = 'idle'; return 'idle'; }
+  if (_displayedZone === 'green' && backendZone === 'yellow' && score < STRAIN_GREEN + ZONE_HYSTERESIS) return 'green';
+  if (_displayedZone === 'yellow' && backendZone === 'green' && score > STRAIN_GREEN - ZONE_HYSTERESIS) return 'yellow';
+  if (_displayedZone === 'yellow' && backendZone === 'red' && score < STRAIN_YELLOW + ZONE_HYSTERESIS) return 'yellow';
+  if (_displayedZone === 'red' && backendZone === 'yellow' && score > STRAIN_YELLOW - ZONE_HYSTERESIS) return 'red';
+  _displayedZone = backendZone;
+  return backendZone;
+}
+
+function updateStrain(frame) {
+  const { strain_score: score, zone: backendZone, tonos, thymos, hnr_db, shimmer_pct, active } = frame;
+  const zone = _hysteresisZone(score, backendZone, active);
+  animateStrain(active ? score : 0, zone);
+  const color = active ? strainColor(score) : '#555';
+  document.getElementById('strain-value').textContent = active ? score.toFixed(2) : '—';
+  if (color !== _lastStrainColor) {
+    _lastStrainColor = color;
+    document.getElementById('strain-value').style.color = color;
+  }
+  const z = document.getElementById('strain-zone');
+  z.textContent = active ? zone.toUpperCase() : 'IDLE';
+  if (active && zone !== 'idle') {
+    z.className = '';
+    z.style.color = color;
+    z.style.background = color.replace('rgb(', 'rgba(').replace(')', ', 0.12)');
+  } else {
+    z.className = zone;
+    z.style.color = ''; z.style.background = '';
+  }
+  if (active) {
+    setBar('tonos', tonos, tonos.toFixed(2));
+    setBar('thymos', 1 - thymos, thymos.toFixed(2));
+    setBar('hnr', Math.min(1, hnr_db / 25), hnr_db.toFixed(1) + ' dB');
+    setBar('shimmer', Math.min(1, shimmer_pct / 10), shimmer_pct.toFixed(1) + '%');
+  }
+  if (micActive && ws?.readyState === WebSocket.OPEN) setStatus('streaming', 'STREAMING');
+  const pill = document.getElementById('phrase-pill');
+  if (!frame.phrase_active) { pill.textContent = 'IDLE'; pill.classList.remove('singing'); }
+}
+
+function setBar(name, frac, label) {
+  document.getElementById('bar-' + name).style.width = (Math.max(0, Math.min(1, frac)) * 100).toFixed(1) + '%';
+  document.getElementById('val-' + name).textContent = label;
+}
+
+// ─── Pitch panel ─────────────────────────────────────────────────────────────
+
+const pitchCanvas = document.getElementById('pitch-canvas');
+const pCtx = pitchCanvas.getContext('2d');
+
+function drawPitchNeedle(cents, voiced) {
+  const W = pitchCanvas.width, H = pitchCanvas.height;
+  pCtx.clearRect(0, 0, W, H);
+  const cx = W/2, barY = H*0.55, barH = 6, barW = W - 40;
+  const barLeft = (W - barW)/2;
+  pCtx.beginPath(); pCtx.roundRect(barLeft, barY-barH/2, barW, barH, 3);
+  pCtx.fillStyle = '#1a1d2e'; pCtx.fill();
+  const gW = barW * 0.3;
+  pCtx.beginPath(); pCtx.roundRect(cx-gW/2, barY-barH/2, gW, barH, 3);
+  pCtx.fillStyle = 'rgba(34,197,94,0.15)'; pCtx.fill();
+  for (const c of [-50, -25, 0, 25, 50]) {
+    const x = cx + (c/50)*(barW/2);
+    pCtx.beginPath(); pCtx.moveTo(x, barY-barH-1); pCtx.lineTo(x, barY+barH+1);
+    pCtx.strokeStyle = c === 0 ? '#3f4555' : '#252838';
+    pCtx.lineWidth = c === 0 ? 1.5 : 1; pCtx.stroke();
+    pCtx.fillStyle = '#3f4555'; pCtx.font = '9px system-ui'; pCtx.textAlign = 'center';
+    pCtx.fillText(c === 0 ? '0' : (c > 0 ? '+'+c : c), x, barY+barH+11);
+  }
+  if (!voiced) return;
+  const clamped = Math.max(-50, Math.min(50, cents));
+  const nx = cx + (clamped/50)*(barW/2);
+  const inTune = Math.abs(cents) <= 15;
+  pCtx.beginPath(); pCtx.arc(nx, barY, 7, 0, Math.PI*2);
+  pCtx.fillStyle = inTune ? '#22c55e' : Math.abs(cents) < 30 ? '#f59e0b' : '#ef4444';
+  if (inTune) { pCtx.shadowColor='#22c55e'; pCtx.shadowBlur=12; }
+  pCtx.fill(); pCtx.shadowBlur = 0;
+}
+
+// ─── Professional tuner pipeline ─────────────────────────────────────────────
+// 6-layer pipeline based on BOSS TU-3 / AudioKit ZenTuner research:
+// 1. Confidence gate  2. Octave rejection  3. Median filter
+// 4. Note hysteresis  5. Cents EMA  6. 60fps visual interpolation
+
+// Layer 1+2: Octave rejection state
+let _lastValidHz = 0;
+let _octaveErrCount = 0;
+const OCTAVE_JUMP_RATIO = 1.8;
+const MAX_OCTAVE_ERRS = 2;
+
+// Layer 3: Median filter (window=5)
+const _hzBuf = [];
+const MEDIAN_WIN = 5;
+function medianFilter(hz) {
+  _hzBuf.push(hz);
+  if (_hzBuf.length > MEDIAN_WIN) _hzBuf.shift();
+  const sorted = [..._hzBuf].sort((a, b) => a - b);
+  return sorted[Math.floor(sorted.length / 2)];
+}
+
+// Layer 4: Note commitment with hysteresis
+let _committedNote = null;
+let _candidateNote = null;
+let _candidateCount = 0;
+const NOTE_COMMIT = 35;   // cents — must be well within semitone to claim
+const NOTE_RELEASE = 50;  // cents — must be near boundary to leave
+const NOTE_DWELL = 4;     // frames before switching
+
+function commitNote(note, centsFromNearest) {
+  if (!_committedNote) {
+    if (Math.abs(centsFromNearest) < NOTE_COMMIT) _committedNote = note;
+    return _committedNote;
+  }
+  if (note === _committedNote) {
+    _candidateNote = null; _candidateCount = 0;
+    return _committedNote;
+  }
+  // Different note — check if we should switch
+  if (Math.abs(centsFromNearest) < NOTE_RELEASE) {
+    // Not far enough from current note center to trigger switch
+    _candidateCount = 0;
+    return _committedNote;
+  }
+  if (note === _candidateNote) {
+    _candidateCount++;
+  } else {
+    _candidateNote = note; _candidateCount = 1;
+  }
+  if (_candidateCount >= NOTE_DWELL) {
+    _committedNote = _candidateNote;
+    _candidateNote = null; _candidateCount = 0;
+  }
+  return _committedNote;
+}
+
+// Layer 5: Dual-rate EMA for cents
+let _smoothCents = 0;
+function emaCents(raw) {
+  const delta = Math.abs(raw - _smoothCents);
+  const alpha = delta > 20 ? 0.5 : 0.22;  // fast for real changes, smooth for jitter
+  _smoothCents = alpha * raw + (1 - alpha) * _smoothCents;
+  return _smoothCents;
+}
+
+// Layer 6: 60fps visual interpolation (decoupled from data rate)
+let _needleTarget = 0;    // set by data at ~15fps
+let _needleDisplay = 0;   // lerped at 60fps
+let _needleVoiced = false;
+const NEEDLE_LERP = 0.12;
+
+function _pitchAnimLoop() {
+  // Lerp needle toward target
+  _needleDisplay += (_needleTarget - _needleDisplay) * NEEDLE_LERP;
+  // Decay toward center when unvoiced
+  if (!_needleVoiced) _needleDisplay *= 0.92;
+  // Only redraw if needle moved meaningfully (>0.1 cents)
+  drawPitchNeedle(_needleDisplay, _needleVoiced || Math.abs(_needleDisplay) > 0.5);
+  requestAnimationFrame(_pitchAnimLoop);
+}
+requestAnimationFrame(_pitchAnimLoop);
+
+// Main pitch update (called at ~15fps from WS data)
+let _lastPitchNote = '';
+let _lastVibState = false;
+function updatePitch(frame) {
+  const { pitch_hz: hz, pitch_note: note, pitch_cents_off: cents, vibrato: vib, active } = frame;
+  const voiced = active && hz > 0;
+  _needleVoiced = voiced;
+
+  if (voiced) {
+    // Layer 1: Octave rejection
+    let filteredHz = hz;
+    if (_lastValidHz > 0) {
+      const ratio = hz / _lastValidHz;
+      if (ratio > OCTAVE_JUMP_RATIO || ratio < 1 / OCTAVE_JUMP_RATIO) {
+        _octaveErrCount++;
+        if (_octaveErrCount < MAX_OCTAVE_ERRS) filteredHz = _lastValidHz;
+        else _octaveErrCount = 0;
+      } else {
+        _octaveErrCount = 0;
+      }
+    }
+    _lastValidHz = filteredHz;
+
+    // Layer 3: Median filter
+    const medHz = medianFilter(filteredHz);
+
+    // Layer 4: Note commitment (use raw note + cents but with hysteresis)
+    const displayNote = commitNote(note, cents) || note;
+
+    // Layer 5: Dual-rate EMA on cents
+    const smoothed = emaCents(cents);
+
+    // Layer 6: Set target for 60fps interpolation
+    _needleTarget = smoothed;
+
+    // Update DOM only when note changes
+    if (displayNote !== _lastPitchNote) {
+      _lastPitchNote = displayNote;
+      document.getElementById('pitch-note-display').textContent = displayNote;
+    }
+    document.getElementById('pitch-cents').textContent = `${cents >= 0 ? '+' : ''}${cents} cents (${Math.round(medHz)} Hz)`;
+  } else {
+    _needleTarget = 0;
+    _hzBuf.length = 0;  // clear median buffer on silence
+    _committedNote = null;
+    _candidateNote = null; _candidateCount = 0;
+    if (_lastPitchNote !== '—') {
+      _lastPitchNote = '—';
+      document.getElementById('pitch-note-display').textContent = '—';
+      document.getElementById('pitch-cents').textContent = '—';
+    }
+  }
+
+  const vibActive = voiced && vib;
+  if (vibActive !== _lastVibState) {
+    _lastVibState = vibActive;
+    const badge = document.getElementById('vibrato-badge');
+    badge.classList.toggle('active', vibActive);
+    badge.textContent = vibActive ? '✓ VIBRATO' : 'VIBRATO';
+  }
+}
+
+// ─── Session graph ────────────────────────────────────────────────────────────
+
+const sessionCanvas = document.getElementById('session-canvas');
+const gCtx = sessionCanvas.getContext('2d');
+const _DPR = window.devicePixelRatio || 1;
+let _gW = 200, _gH = 50;
+
+function resizeGraph() {
+  _gW = (sessionCanvas.parentElement.clientWidth - 28) || 200;
+  _gH = 50;
+  sessionCanvas.width = _gW * _DPR;
+  sessionCanvas.height = _gH * _DPR;
+  sessionCanvas.style.width = _gW + 'px';
+  sessionCanvas.style.height = _gH + 'px';
+  gCtx.setTransform(_DPR, 0, 0, _DPR, 0, 0);
+}
+resizeGraph();
+window.addEventListener('resize', () => { resizeGraph(); drawGraph(); });
+
+function drawGraph() {
+  const W = _gW, H = _gH;
+  gCtx.clearRect(0, 0, W, H);
+  if (strainHistory.length < 2) return;
+  for (const [t, c] of [[STRAIN_GREEN,'rgba(34,197,94,0.08)'],[STRAIN_YELLOW,'rgba(239,68,68,0.08)']]) {
+    const y = H - t*H;
+    gCtx.beginPath(); gCtx.moveTo(0,y); gCtx.lineTo(W,y);
+    gCtx.strokeStyle=c; gCtx.lineWidth=1; gCtx.setLineDash([4,4]); gCtx.stroke(); gCtx.setLineDash([]);
+  }
+  const n = strainHistory.length, xStep = W/(n-1);
+  gCtx.lineWidth = 1.5; gCtx.lineJoin = 'round'; gCtx.lineCap = 'round';
+  for (let i=1; i<n; i++) {
+    const x0=(i-1)*xStep, x1=i*xStep, y0=H-strainHistory[i-1]*H, y1=H-strainHistory[i]*H;
+    gCtx.beginPath(); gCtx.moveTo(x0,y0); gCtx.lineTo(x1,y1);
+    gCtx.strokeStyle = strainColor(strainHistory[i]);
+    gCtx.stroke();
+  }
+  const avg = strainHistory.reduce((a,b)=>a+b,0)/n;
+  const max = Math.max(...strainHistory);
+  document.getElementById('session-stats').textContent = `avg ${avg.toFixed(2)} · peak ${max.toFixed(2)}`;
+}
+
+// ─── Coaching display ─────────────────────────────────────────────────────────
+
+function showCoach(msg) {
+  document.getElementById('phrase-pill').textContent = 'IDLE';
+  document.getElementById('phrase-pill').classList.remove('singing');
+  const { zone, phrase_avg_strain: avg } = msg;
+  const greenMsgs = [
+    'Nice and relaxed — keep that easy placement.',
+    'Healthy phonation. You\'re right in the pocket.',
+    'Great support — that\'s the sound of efficient singing.',
+  ];
+  const yellowMsgs = [
+    'Starting to push — try easing back on the breath pressure.',
+    'A bit of tension creeping in. Think open throat, less effort.',
+    'You can back off slightly and still get the same volume.',
+  ];
+  const redMsgs = [
+    'That\'s a lot of strain — take a breath and reset.',
+    'Your voice needs a break from that intensity. Lighten up.',
+    'Back off — you\'re pushing harder than your voice wants to go.',
+  ];
+  const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  const msgs = { green: pick(greenMsgs), yellow: pick(yellowMsgs), red: pick(redMsgs) };
+  const el = document.getElementById('coach-text');
+  el.classList.add('active');
+  if (zone !== 'green') {
+    _setPhase('speaking');
+    _cardPulse();
+    _avatarPulse(zone === 'red' ? 'alert' : 'positive');
+    _streamText(el, msgs[zone] || '');
+  } else {
+    _avatarPulse('positive');
+    _streamText(el, msgs[zone] || '', { delay: 80 });
+  }
+  _resetCoachText(8000);
+}
+
+// ─── Vocal Range Mapper ───────────────────────────────────────────────────────
+
+const RANGE_NOTES = (() => {
+  const names = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+  const notes = [];
+  for (let oct = 2; oct <= 6; oct++)
+    for (const n of names) notes.push(`${n}${oct}`);
+  return notes;
+})();
+
+const rangeCanvas = document.getElementById('range-canvas');
+const rCtx = rangeCanvas.getContext('2d');
+let _rangeData = {};
+let _currentNote = '—';
+let _rW = 200, _rH = 50;
+
+function _resizeRangeCanvas() {
+  _rW = rangeCanvas.offsetWidth || 200;
+  _rH = rangeCanvas.offsetHeight || 50;
+  rangeCanvas.width = _rW * _DPR;
+  rangeCanvas.height = _rH * _DPR;
+  rCtx.setTransform(_DPR, 0, 0, _DPR, 0, 0);
+}
+
+function updateRangeMapper(noteData) { _rangeData = noteData; drawRangeMapper(); }
+
+function drawRangeMapper() {
+  const curW = rangeCanvas.offsetWidth || _rW;
+  if (curW !== _rW) _resizeRangeCanvas();
+  const W = _rW, H = _rH;
+  rCtx.clearRect(0, 0, W, H);
+  const noteW = W / RANGE_NOTES.length;
+  const BAR_H = H - 12;
+  const gap = Math.max(1, Math.round(noteW * 0.12));  // clean gap between bars
+  RANGE_NOTES.forEach((note, i) => {
+    const x = Math.round(i * noteW);
+    const w = Math.round(noteW) - gap;
+    const d = _rangeData[note];
+    const isBlack = note.includes('#');
+    const isCurrent = note === _currentNote;
+    // Background bars — pixel-aligned for crisp rendering
+    rCtx.fillStyle = isBlack ? '#0a0c14' : '#0d0f18';
+    rCtx.fillRect(x, 0, w, BAR_H);
+    if (d) {
+      const avg = d.avg;
+      let col;
+      if (avg < 0.25) col = '#22c55e';
+      else if (avg < 0.40) col = '#f59e0b';
+      else col = '#ef4444';
+      const fillH = Math.min(1, d.count / 40) * BAR_H;
+      if (isCurrent) {
+        // Current note: bright glow instead of white outline
+        rCtx.shadowColor = col; rCtx.shadowBlur = 10;
+        rCtx.fillStyle = col;
+        rCtx.fillRect(x, BAR_H - fillH, w, fillH);
+        rCtx.shadowBlur = 0;
+      } else {
+        rCtx.fillStyle = col + '88';
+        rCtx.fillRect(x, BAR_H - fillH, w, fillH);
+      }
+    } else if (isCurrent) {
+      // Current note with no data yet — subtle highlight
+      rCtx.fillStyle = 'rgba(34,197,94,0.25)';
+      rCtx.fillRect(x, 0, w, BAR_H);
+    }
+    if (note.startsWith('C') && !note.includes('#')) {
+      rCtx.fillStyle = '#3f4555'; rCtx.font = '8px system-ui'; rCtx.textAlign = 'center';
+      rCtx.fillText(note, x + w / 2, H - 2);
+    }
+  });
+}
+
+window.addEventListener('resize', () => { _resizeRangeCanvas(); drawRangeMapper(); });
+_resizeRangeCanvas();
+drawRangeMapper();
+
+// Init
+drawStrainMeter(0, 'idle');
+drawPitchNeedle(0, false);
+</script>
+</body>
+</html>

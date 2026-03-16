@@ -1,0 +1,20 @@
+[
+  {
+    "at": 40.0,
+    "duration": 8.0,
+    "label": "coaching_cue_1",
+    "_note": "After first strained phrase — Gemini coaches"
+  },
+  {
+    "at": 55.0,
+    "duration": 6.0,
+    "label": "correction_pause",
+    "_note": "Singer adjusts, gauge drops to green — the wow moment"
+  },
+  {
+    "at": 75.0,
+    "duration": 16.0,
+    "label": "song_end_silence",
+    "_note": "Post-song silence triggers Gemini summary"
+  }
+]

@@ -1,0 +1,80 @@
+{
+  "run_id": 2,
+  "audio_file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/singing/better_days_courtney_odom.wav",
+  "clips": [
+    {
+      "type": "gemini_coaching",
+      "transcript": "Hey! Let's warm up your voice. Start whenever you're ready \u2014 nice and easy.",
+      "zone": "green",
+      "file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/gemini_clips/run_02/gemini_coaching_00.wav",
+      "duration": 4.4,
+      "timestamp": 1773688991.414975
+    },
+    {
+      "type": "gemini_coaching",
+      "transcript": "Release the grip. Reset and breathe.",
+      "zone": "red",
+      "file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/gemini_clips/run_02/gemini_coaching_01.wav",
+      "duration": 2.96,
+      "timestamp": 1773689018.702446
+    },
+    {
+      "type": "gemini_coaching",
+      "transcript": "Shake it out. Complete reset.",
+      "zone": "red",
+      "file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/gemini_clips/run_02/gemini_coaching_02.wav",
+      "duration": 2.68,
+      "timestamp": 1773689035.494303
+    },
+    {
+      "type": "gemini_coaching",
+      "transcript": "Ease off. Find the note from below.",
+      "zone": "red",
+      "file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/gemini_clips/run_02/gemini_coaching_03.wav",
+      "duration": 2.72,
+      "timestamp": 1773689041.4321458
+    },
+    {
+      "type": "gemini_coaching",
+      "transcript": "Take a breath. Release and find an easier sound.",
+      "zone": "red",
+      "file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/gemini_clips/run_02/gemini_coaching_04.wav",
+      "duration": 3.8,
+      "timestamp": 1773689072.158366
+    },
+    {
+      "type": "gemini_coaching",
+      "transcript": "Stop pushing. Drop and reset.",
+      "zone": "red",
+      "file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/gemini_clips/run_02/gemini_coaching_05.wav",
+      "duration": 2.92,
+      "timestamp": 1773689088.4522839
+    },
+    {
+      "type": "gemini_coaching",
+      "transcript": "Release all tension. Breathe and start easy.",
+      "zone": "red",
+      "file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/gemini_clips/run_02/gemini_coaching_06.wav",
+      "duration": 4.16,
+      "timestamp": 1773689100.864279
+    },
+    {
+      "type": "gemini_coaching",
+      "transcript": "Complete reset. Find the easy feeling.",
+      "zone": "red",
+      "file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/gemini_clips/run_02/gemini_coaching_07.wav",
+      "duration": 3.28,
+      "timestamp": 1773689149.058364
+    },
+    {
+      "type": "song_praise",
+      "transcript": "Solid session! Mostly green, great control.",
+      "zone": "",
+      "file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/gemini_clips/run_02/song_praise_08.wav",
+      "duration": 3.6,
+      "timestamp": 1773689156.9814348
+    }
+  ],
+  "total_events": 5018,
+  "ears_frames": 1772
+}

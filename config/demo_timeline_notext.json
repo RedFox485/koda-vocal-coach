@@ -1,0 +1,235 @@
+{
+  "project": "Koda Demo Video",
+  "_note": "Timeline for Gemini Live Agent Challenge. Source: demo_session.mp4 captured via Reel. Singing: better_days (Courtney Odom, CC0).",
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "background": "#0d0f14"
+  },
+  "tracks": {
+    "video": [
+      {
+        "id": "shot1_hook",
+        "source": "video/dji_hook.mp4",
+        "timeline_start": 0.0,
+        "timeline_end": 3.0,
+        "source_in": 5.0,
+        "source_out": 8.0,
+        "_note": "DJI Pocket 2 \u2014 Daniel singing into phone, Koda UI visible, great energy"
+      },
+      {
+        "id": "shot2_start_screen",
+        "source": "video/captures/shot2_start.png",
+        "timeline_start": 3.0,
+        "timeline_end": 12.0,
+        "_note": "Koda start screen, idle state"
+      },
+      {
+        "id": "shot3_greeting",
+        "source": "video/captures/take_02.mp4",
+        "timeline_start": 12.0,
+        "timeline_end": 20.0,
+        "source_in": 3.0,
+        "source_out": 11.0,
+        "_note": "Dashboard appears after Watch click, audio begins"
+      },
+      {
+        "id": "shot4_green_zone",
+        "source": "video/captures/take_02.mp4",
+        "timeline_start": 20.0,
+        "timeline_end": 48.0,
+        "source_in": 25.0,
+        "source_out": 53.0,
+        "_note": "Green zone singing \u2014 gauge at 0.15-0.25 GREEN, pitch tracking, session building"
+      },
+      {
+        "id": "shot5a_strain",
+        "source": "video/captures/take_02.mp4",
+        "timeline_start": 48.0,
+        "timeline_end": 65.0,
+        "source_in": 62.0,
+        "source_out": 79.0,
+        "_note": "Strain builds \u2014 gauge shifts to YELLOW/RED (song chorus section)"
+      },
+      {
+        "id": "shot5b_coaching",
+        "source": "video/captures/take_02.mp4",
+        "timeline_start": 65.0,
+        "timeline_end": 78.0,
+        "source_in": 53.0,
+        "source_out": 66.0,
+        "_note": "Coaching moment \u2014 silence pause, gauge settling. In real demo: Gemini speaks here."
+      },
+      {
+        "id": "shot5c_correction",
+        "source": "video/captures/take_02.mp4",
+        "timeline_start": 78.0,
+        "timeline_end": 98.0,
+        "source_in": 100.0,
+        "source_out": 120.0,
+        "_note": "Singer resumes, adjusts technique. Mix of green/yellow showing recovery."
+      },
+      {
+        "id": "shot6_summary",
+        "source": "video/captures/take_02.mp4",
+        "timeline_start": 98.0,
+        "timeline_end": 125.0,
+        "source_in": 170.0,
+        "source_out": 185.0,
+        "_note": "Song ends, gauge settles. Session graph visible with full green/red history."
+      },
+      {
+        "id": "shot7_architecture",
+        "source": "docs/architecture-LATEST.png",
+        "timeline_start": 125.0,
+        "timeline_end": 140.0,
+        "_note": "Architecture diagram (dark theme, 15s)"
+      },
+      {
+        "id": "shot8a_ui_close",
+        "source": "video/captures/take_02.mp4",
+        "timeline_start": 140.0,
+        "timeline_end": 148.0,
+        "source_in": 185.0,
+        "source_out": 187.0,
+        "_note": "Final UI state \u2014 full session visible"
+      },
+      {
+        "id": "shot8b_title_card",
+        "source": "video/title_card.png",
+        "timeline_start": 148.0,
+        "timeline_end": 155.0,
+        "_note": "Title card: Koda + Powered by Gemini Live"
+      }
+    ],
+    "audio": [
+      {
+        "id": "vo_01_problem",
+        "source": "audio/voiceover_v2/vo_01_problem.mp3",
+        "timeline_start": 3.5,
+        "group": "voiceover",
+        "priority": 1,
+        "fade_in": 0.1,
+        "fade_out": 0.2
+      },
+      {
+        "id": "vo_02_greeting",
+        "source": "audio/voiceover_v2/vo_02_greeting.mp3",
+        "timeline_start": 13.0,
+        "group": "voiceover",
+        "priority": 1
+      },
+      {
+        "id": "vo_03_warmup_tech",
+        "source": "audio/voiceover_v2/vo_03_warmup_tech.mp3",
+        "timeline_start": 25.0,
+        "group": "voiceover",
+        "priority": 1
+      },
+      {
+        "id": "vo_04_strain",
+        "source": "audio/voiceover_v2/vo_04_strain.mp3",
+        "timeline_start": 53.0,
+        "group": "voiceover",
+        "priority": 1
+      },
+      {
+        "id": "vo_05_coaching",
+        "source": "audio/voiceover_v2/vo_05_coaching.mp3",
+        "timeline_start": 70.0,
+        "group": "voiceover",
+        "priority": 1
+      },
+      {
+        "id": "vo_06_correction",
+        "source": "audio/voiceover_v2/vo_06_correction.mp3",
+        "timeline_start": 85.0,
+        "group": "voiceover",
+        "priority": 1
+      },
+      {
+        "id": "vo_07_summary",
+        "source": "audio/voiceover_v2/vo_07_summary.mp3",
+        "timeline_start": 112.0,
+        "group": "voiceover",
+        "priority": 1
+      },
+      {
+        "id": "vo_08_architecture",
+        "source": "audio/voiceover_v2/vo_08_architecture.mp3",
+        "timeline_start": 125.0,
+        "group": "voiceover",
+        "priority": 1
+      },
+      {
+        "id": "vo_09_close",
+        "source": "audio/voiceover_v2/vo_09_close.mp3",
+        "timeline_start": 147.0,
+        "group": "voiceover",
+        "priority": 1,
+        "fade_out": 0.5
+      },
+      {
+        "id": "singing_main",
+        "source": "audio/singing/better_days_courtney_odom.wav",
+        "timeline_start": 20.0,
+        "timeline_end": 98.0,
+        "source_in": 0.0,
+        "source_out": 78.0,
+        "group": "singing",
+        "priority": 3,
+        "volume": {
+          "default": 0.8,
+          "duck_under": "voiceover",
+          "duck_level": 0.3,
+          "duck_attack": 0.3,
+          "duck_release": 0.5
+        }
+      },
+      {
+        "id": "gemini_greeting",
+        "source": "audio/gemini_clips/run_01/gemini_coaching_00.wav",
+        "timeline_start": 18.0,
+        "group": "gemini",
+        "priority": 1,
+        "_note": "Gemini greeting: Hey! Let's warm up your voice. (4.5s, P1 never ducked)"
+      },
+      {
+        "id": "gemini_coaching_1",
+        "source": "audio/gemini_clips/run_01/gemini_coaching_01.wav",
+        "timeline_start": 66.0,
+        "group": "gemini",
+        "priority": 1,
+        "_note": "Coaching cue 1: Shake it out. Reset your breath, come back easy. (3.5s)"
+      },
+      {
+        "id": "gemini_coaching_2",
+        "source": "audio/gemini_clips/run_02/gemini_coaching_03.wav",
+        "timeline_start": 82.0,
+        "group": "gemini",
+        "priority": 1,
+        "_note": "Coaching cue 2: Ease off. Find the note from below. (2.7s)"
+      },
+      {
+        "id": "gemini_summary",
+        "source": "audio/gemini_clips/run_02/song_praise_08.wav",
+        "timeline_start": 102.0,
+        "group": "gemini",
+        "priority": 1,
+        "_note": "Song summary: Solid session! Mostly green, great control. (3.6s)"
+      }
+    ],
+    "text": []
+  },
+  "export": {
+    "youtube": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "codec": "h264",
+      "crf": 18,
+      "audio_bitrate": "320k"
+    }
+  }
+}

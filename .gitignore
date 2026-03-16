@@ -1,0 +1,51 @@
+# EARS core — proprietary, not in public repo
+ears/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.env
+
+# API keys
+.env
+secrets.py
+
+# Audio test files
+*.wav
+*.mp3
+*.m4a
+demo/*.wav
+Vocal test recording sessions/
+
+# Research data
+data/cvt_dataset/
+
+# Trained models
+*.joblib
+*.pkl
+models/
+
+# Internal docs
+docs/internal/
+docs/SESSION-STATE*.md
+
+# Dev artifacts
+frontend/debug.html
+frontend/test.html
+
+# macOS
+.DS_Store
+
+# Large media files
+video/
+*.mp4
+*.webm
+*.MOV
+*.zip
+
+# CXDB
+.cxdb/
+
+# Claude session data
+docs/SESSION-STATE*.md

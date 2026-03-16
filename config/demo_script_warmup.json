@@ -1,0 +1,71 @@
+{
+  "voice_id": "onwK4e9ZLuTAKqWW03F9",
+  "voice_name": "Daniel - Steady Broadcaster",
+  "model": "eleven_multilingual_v2",
+  "_note": "Updated script with warm-up angle + trimmed per demo review feedback",
+  "clips": [
+    {
+      "id": "vo_01_problem",
+      "text": "Hundreds of millions of singers practice alone with zero feedback. This is Koda — your AI vocal coach, powered by Gemini Live.",
+      "stability": 0.65,
+      "style": 0.2,
+      "_note": "9s. Unified framing: coaching, not just strain detection. 'Practice alone' includes warm-ups."
+    },
+    {
+      "id": "vo_02_greeting",
+      "text": "One tap. Gemini greets you and starts the warm-up.",
+      "stability": 0.65,
+      "style": 0.2,
+      "_note": "Quick. Let Gemini's greeting be the star."
+    },
+    {
+      "id": "vo_03_warmup_tech",
+      "text": "Multiple acoustic analyzers run in parallel — measuring vocal fold closure, harmonic stability, and timbral strain. Total pipeline latency: ninety-six milliseconds. The baseline adapts to your voice, not fixed thresholds.",
+      "stability": 0.55,
+      "style": 0.25,
+      "_note": "Trimmed from 52 to 28 words per review. Lead with 96ms. Save algorithm names for architecture shot."
+    },
+    {
+      "id": "vo_04_strain",
+      "text": "When you push too hard, Koda sees it immediately. Shimmer spikes. Cepstral peak prominence drops. The strain engine fuses these signals in real-time.",
+      "stability": 0.55,
+      "style": 0.35,
+      "_note": "Energy rises with strain. 'Watch this' energy."
+    },
+    {
+      "id": "vo_05_coaching",
+      "text": "At every breath point, Gemini speaks a technique cue. Not scripted — it reads the strain data and improvises.",
+      "stability": 0.60,
+      "style": 0.35,
+      "_note": "After coaching cue plays. Trimmed to essentials."
+    },
+    {
+      "id": "vo_06_correction",
+      "text": "The singer adjusts. The gauge drops back to green. That is the feedback loop — Gemini coaches, you respond, Koda measures the result.",
+      "stability": 0.60,
+      "style": 0.35,
+      "_note": "THE wow moment. The closed loop. This replaces 'second cue' — correction is more powerful."
+    },
+    {
+      "id": "vo_07_summary",
+      "text": "After each song, Gemini delivers a spoken summary. One persistent session — every phrase, every zone transition stays in context.",
+      "stability": 0.65,
+      "style": 0.3,
+      "_note": "Trimmed. 'No resets' removed per review — judges might not know what it means."
+    },
+    {
+      "id": "vo_08_architecture",
+      "text": "Browser captures audio over WebSocket. Cloud Run backend runs multiple analyzers in parallel — Parselmouth, C P P, perceptual engine, phonation classifier. The strain engine triggers Gemini Live at each phrase boundary. Native audio generation.",
+      "stability": 0.50,
+      "style": 0.15,
+      "_note": "Rapid-fire. Removed wavelet scattering claim (not running). Removed 'not TTS' (judges might not know what TTS means)."
+    },
+    {
+      "id": "vo_09_close",
+      "text": "Most people who love to sing will never work with a vocal coach. Koda changes that. Powered by Gemini Live.",
+      "stability": 0.70,
+      "style": 0.45,
+      "_note": "SLOW. Emotional. Simple and memorable. Daniel's preferred line."
+    }
+  ]
+}

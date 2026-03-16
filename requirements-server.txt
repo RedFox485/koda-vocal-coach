@@ -1,0 +1,11 @@
+# Server deps (no sounddevice — mic comes from browser)
+google-genai>=1.66.0
+numpy
+librosa
+fastapi
+uvicorn[standard]
+websockets
+praat-parselmouth
+joblib
+scikit-learn
+pyyaml

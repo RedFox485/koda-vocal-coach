@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+*.pyc
+.git/
+*.md
+docs/
+scripts/
+Vocal test recording sessions/
+fly.toml
+*.m4a
+*.wav
+*.mp3
+ears/
+assets/
+data/
+demo/
+tests/
+audio/
+video/
+.DS_Store
+requirements.txt
+.dockerignore

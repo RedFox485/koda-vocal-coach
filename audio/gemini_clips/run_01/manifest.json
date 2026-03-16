@@ -1,0 +1,64 @@
+{
+  "run_id": 1,
+  "audio_file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/singing/better_days_courtney_odom.wav",
+  "clips": [
+    {
+      "type": "gemini_coaching",
+      "transcript": "Hey! Let's warm up your voice. Start whenever you're ready \u2014 nice and easy.",
+      "zone": "green",
+      "file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/gemini_clips/run_01/gemini_coaching_00.wav",
+      "duration": 4.48,
+      "timestamp": 1773688793.691232
+    },
+    {
+      "type": "gemini_coaching",
+      "transcript": "Shake it out. Reset your breath, come back easy.",
+      "zone": "red",
+      "file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/gemini_clips/run_01/gemini_coaching_01.wav",
+      "duration": 3.52,
+      "timestamp": 1773688816.297208
+    },
+    {
+      "type": "gemini_coaching",
+      "transcript": "Release the grip. Reset and breathe.",
+      "zone": "red",
+      "file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/gemini_clips/run_01/gemini_coaching_02.wav",
+      "duration": 2.96,
+      "timestamp": 1773688822.04509
+    },
+    {
+      "type": "gemini_coaching",
+      "transcript": "Stop pushing, find an easier feeling.",
+      "zone": "red",
+      "file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/gemini_clips/run_01/gemini_coaching_03.wav",
+      "duration": 2.88,
+      "timestamp": 1773688839.2509341
+    },
+    {
+      "type": "gemini_coaching",
+      "transcript": "Complete reset. Breathe and drop.",
+      "zone": "red",
+      "file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/gemini_clips/run_01/gemini_coaching_04.wav",
+      "duration": 3.2,
+      "timestamp": 1773688845.651196
+    },
+    {
+      "type": "gemini_coaching",
+      "transcript": "Easy now. Find a soft feeling first.",
+      "zone": "red",
+      "file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/gemini_clips/run_01/gemini_coaching_05.wav",
+      "duration": 3.36,
+      "timestamp": 1773688873.9452748
+    },
+    {
+      "type": "gemini_coaching",
+      "transcript": "Release all tension. Start with breath.",
+      "zone": "red",
+      "file": "/Users/daniel/Documents/projects/koda-comp-gemini/audio/gemini_clips/run_01/gemini_coaching_06.wav",
+      "duration": 3.52,
+      "timestamp": 1773688952.326526
+    }
+  ],
+  "total_events": 3780,
+  "ears_frames": 1770
+}

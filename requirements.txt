@@ -1,0 +1,8 @@
+google-genai>=1.66.0
+numpy
+librosa
+sounddevice
+fastapi
+uvicorn[standard]
+websockets
+praat-parselmouth

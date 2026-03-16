@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d1117;
+    display: flex; justify-content: center; align-items: center;
+    min-height: 100vh;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  .diagram {
+    width: 1440px; height: 780px;
+    background: #0d1117;
+    position: relative; overflow: hidden;
+  }
+
+  /* Title */
+  .title { position: absolute; top: 16px; left: 0; right: 0; text-align: center; }
+  .title h1 { color: #e6edf3; font-size: 17px; font-weight: 700; letter-spacing: 0.5px; }
+  .title p { color: #484f58; font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+
+  /* Zones */
+  .zone { position: absolute; border-radius: 12px; border: 1px solid; }
+  .zlbl { position: absolute; font-size: 9.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+
+  .z1 { left: 30px; top: 62px; width: 240px; height: 660px;
+    background: linear-gradient(180deg, rgba(56,139,253,0.04) 0%, rgba(56,139,253,0.01) 100%);
+    border-color: rgba(56,139,253,0.09); }
+  .z1l { left: 46px; top: 76px; color: rgba(56,139,253,0.45); }
+
+  .z2 { left: 290px; top: 62px; width: 470px; height: 660px;
+    background: linear-gradient(180deg, rgba(63,185,80,0.03) 0%, rgba(63,185,80,0.01) 100%);
+    border-color: rgba(63,185,80,0.07); }
+  .z2l { left: 306px; top: 76px; color: rgba(63,185,80,0.4); }
+
+  .z3 { left: 780px; top: 62px; width: 630px; height: 660px;
+    background: linear-gradient(180deg, rgba(163,113,247,0.04) 0%, rgba(163,113,247,0.01) 100%);
+    border-color: rgba(163,113,247,0.09); }
+  .z3l { left: 796px; top: 76px; color: rgba(163,113,247,0.45); }
+
+  /* Nodes */
+  .n { position: absolute; border-radius: 10px; border: 1px solid; padding: 14px 18px; }
+  .n h3 { font-size: 13px; font-weight: 600; margin-bottom: 5px; line-height: 1.3; }
+  .n p { font-size: 10px; line-height: 1.6; }
+  .n .sub { color: #8b949e; opacity: 0.6; }
+
+  .nb { background: rgba(56,139,253,0.05); border-color: rgba(56,139,253,0.16); }
+  .nb h3 { color: #79c0ff; }
+
+  .ng { background: rgba(63,185,80,0.04); border-color: rgba(63,185,80,0.13); }
+  .ng h3 { color: #7ee787; }
+
+  .np { background: rgba(163,113,247,0.05); border-color: rgba(163,113,247,0.16); }
+  .np h3 { color: #d2a8ff; }
+
+  /* Pipeline detail rows */
+  .pipe-row { display: flex; align-items: baseline; margin-bottom: 3px; }
+  .pipe-name { font-weight: 600; color: #56d364; min-width: 120px; font-size: 10px; }
+  .pipe-desc { color: #8b949e; font-size: 9.5px; flex: 1; opacity: 0.6; }
+  .pipe-time { color: #3fb950; font-size: 9px; font-weight: 500; min-width: 45px; text-align: right; opacity: 0.7; }
+  .pipe-badge { display: inline-block; font-size: 9px; font-weight: 600; color: #3fb950; background: rgba(63,185,80,0.06); border: 1px solid rgba(63,185,80,0.10); border-radius: 20px; padding: 1px 10px; margin-left: 12px; vertical-align: middle; }
+
+  /* SVG */
+  .arrows { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+
+  /* Footer */
+  .foot { position: absolute; bottom: 10px; right: 30px; font-size: 8.5px; color: #30363d; letter-spacing: 0.5px; }
+  .foot span { color: #484f58; }
+</style>
+</head>
+<body>
+<div class="diagram">
+
+  <div class="title">
+    <h1>Koda Vocal Health Coach</h1>
+    <p>System Architecture</p>
+  </div>
+
+  <!-- Zones -->
+  <div class="zone z1"></div>
+  <div class="zlbl z1l">Browser</div>
+  <div class="zone z2"></div>
+  <div class="zlbl z2l">Backend &middot; Cloud Run</div>
+  <div class="zone z3"></div>
+  <div class="zlbl z3l">Gemini 2.5 Flash &middot; Live API</div>
+
+  <!-- ====== ROW 1: Audio Input ====== -->
+  <!-- Mic, WS, and Session all at y=110 — clean horizontal band -->
+  <div class="n nb" style="left:48px; top:110px; width:204px;">
+    <h3>Microphone</h3>
+    <p class="sub">getUserMedia API<br>Float32 PCM &middot; 44.1 kHz</p>
+  </div>
+
+  <div class="n ng" style="left:320px; top:110px; width:410px;">
+    <h3>WebSocket Server</h3>
+    <p class="sub">Binary audio in &middot; JSON metrics out<br>10 Hz bidirectional frame rate</p>
+  </div>
+
+  <div class="n np" style="left:810px; top:110px; width:570px;">
+    <h3>Persistent Live Session</h3>
+    <p class="sub">
+      Maintains coaching context across full practice session<br>
+      Voice: Kore &middot; Native audio generation (not TTS)<br>
+      Auto-reconnect on session timeout
+    </p>
+  </div>
+
+  <!-- ====== ROW 2: Processing / Coaching ====== -->
+  <div class="n ng" style="left:320px; top:260px; width:410px;">
+    <h3>Acoustic Analysis Pipeline <span class="pipe-badge">~96 ms / frame</span></h3>
+    <div style="margin-top: 8px;">
+      <div class="pipe-row"><span class="pipe-name">Parselmouth</span><span class="pipe-desc">Shimmer &middot; HNR &middot; Pitch tracking</span><span class="pipe-time">~78 ms</span></div>
+      <div class="pipe-row"><span class="pipe-name">CPP Analysis</span><span class="pipe-desc">Cepstral peak prominence &middot; loudness-robust</span><span class="pipe-time">~1 ms</span></div>
+      <div class="pipe-row"><span class="pipe-name">EARS Engine</span><span class="pipe-desc">8 perceptual signals &middot; mel spectrogram</span><span class="pipe-time">~9 ms</span></div>
+      <div class="pipe-row"><span class="pipe-name">Wavelet Scatter</span><span class="pipe-desc">34-dim modulation analysis</span><span class="pipe-time">~3 ms</span></div>
+      <div class="pipe-row"><span class="pipe-name">Phonation</span><span class="pipe-desc">CVT-trained classifier &middot; 4 vocal modes</span><span class="pipe-time"></span></div>
+    </div>
+  </div>
+
+  <!-- Dashboard aligned with Coaching top (y=310) -->
+  <div class="n nb" style="left:48px; top:310px; width:204px;">
+    <h3>Dashboard</h3>
+    <p class="sub">Strain gauge &middot; Pitch tuner<br>Range map &middot; Session graph</p>
+  </div>
+
+  <div class="n np" style="left:810px; top:310px; width:570px;">
+    <h3>Real-Time Voice Coaching</h3>
+    <p class="sub">
+      Phrase coaching &mdash; spoken technique cue &le;8 words at each breath point<br>
+      Song-end summary &mdash; praise + technique notes after 4 s silence<br>
+      Style-anchored via YAML config &middot; Improvised, not scripted
+    </p>
+  </div>
+
+  <!-- ====== ROW 3: Output / Results ====== -->
+  <div class="n ng" style="left:320px; top:500px; width:410px;">
+    <h3>Strain &amp; Phrase Engine</h3>
+    <p class="sub">
+      Session-adaptive baseline &middot; EMA &middot; strain-gated<br>
+      Fusion: max(shimmer<sub>dev</sub>, CPP<sub>dev</sub>) + EARS corroboration<br>
+      Phrase detection &middot; Zone classification &middot; Coaching trigger
+    </p>
+  </div>
+
+  <!-- Audio Output aligned with Greeting (y=530) -->
+  <div class="n nb" style="left:48px; top:530px; width:204px;">
+    <h3>Audio Output</h3>
+    <p class="sub">Web Audio playback<br>Coaching voice from Gemini</p>
+  </div>
+
+  <div class="n np" style="left:810px; top:530px; width:570px;">
+    <h3>Greeting &amp; Session Flow</h3>
+    <p class="sub">
+      Spoken welcome on singer connect<br>
+      Coaching evolves as session context builds &middot; Interruptible
+    </p>
+  </div>
+
+  <!-- ====== SVG ARROWS ====== -->
+  <!-- All coordinates derived from measured bounding boxes -->
+  <!-- Mic: L=48 T=110 R=252 B=194 CY=152 -->
+  <!-- WS:  L=320 T=110 R=730 B=194 CY=152 -->
+  <!-- Analysis: L=320 T=260 R=730 B=390 CY=325 -->
+  <!-- Strain: L=320 T=500 R=730 B=603 CY=552 -->
+  <!-- Dashboard: L=48 T=310 R=252 B=394 CY=352 -->
+  <!-- Audio: L=48 T=530 R=252 B=614 CY=572 -->
+  <!-- Session: L=810 T=110 R=1380 B=210 CY=160 -->
+  <!-- Coaching: L=810 T=310 R=1380 B=410 CY=360 -->
+  <!-- Greeting: L=810 T=530 R=1380 B=614 CY=572 -->
+  <!-- Inter-zone gaps: browser-backend x=270..290, backend-gemini x=760..780 -->
+  <svg class="arrows" viewBox="0 0 1440 780">
+    <defs>
+      <marker id="ab" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+        <polygon points="0 0, 7 2.5, 0 5" fill="rgba(56,139,253,0.4)"/>
+      </marker>
+      <marker id="ag" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+        <polygon points="0 0, 7 2.5, 0 5" fill="rgba(63,185,80,0.35)"/>
+      </marker>
+      <marker id="ap" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+        <polygon points="0 0, 7 2.5, 0 5" fill="rgba(163,113,247,0.4)"/>
+      </marker>
+    </defs>
+
+    <!-- ═══ FORWARD PATH ═══ -->
+
+    <!-- 1. Mic → WS: horizontal at shared CY=152 -->
+    <line x1="252" y1="152" x2="320" y2="152"
+          stroke="rgba(56,139,253,0.35)" stroke-width="1.5" marker-end="url(#ab)"/>
+    <text x="258" y="145" font-family="-apple-system, system-ui" font-size="8" fill="rgba(56,139,253,0.55)" font-weight="500">100ms chunks</text>
+
+    <!-- 2. WS → Analysis: vertical drop, WS bottom=194 → Analysis top=260 -->
+    <line x1="525" y1="194" x2="525" y2="260"
+          stroke="rgba(63,185,80,0.3)" stroke-width="1.5" marker-end="url(#ag)"/>
+
+    <!-- 3. Analysis → Strain: vertical drop, Analysis bottom=390 → Strain top=500 -->
+    <line x1="525" y1="393" x2="525" y2="500"
+          stroke="rgba(63,185,80,0.3)" stroke-width="1.5" marker-end="url(#ag)"/>
+
+    <!-- 4. Strain → Coaching: L-shape through inter-zone gap -->
+    <!-- Strain right=730, CY=552 → inter-zone x=770 → up to Coaching CY=360 → Coaching left=810 -->
+    <path d="M 730 552 L 770 552 L 770 360 L 810 360"
+          stroke="rgba(163,113,247,0.35)" stroke-width="1.5" fill="none" marker-end="url(#ap)"/>
+
+    <!-- ═══ INTERNAL (GEMINI) ═══ -->
+
+    <!-- 5. Session → Coaching: vertical, Session bottom=210 → Coaching top=310 -->
+    <line x1="1095" y1="210" x2="1095" y2="310"
+          stroke="rgba(163,113,247,0.12)" stroke-width="1" marker-end="url(#ap)"/>
+
+    <!-- 6. Coaching → Greeting: vertical, Coaching bottom=410 → Greeting top=530 -->
+    <line x1="1095" y1="410" x2="1095" y2="530"
+          stroke="rgba(163,113,247,0.12)" stroke-width="1" marker-end="url(#ap)"/>
+
+    <!-- ═══ RETURN PATH ═══ -->
+
+    <!-- 7. Gemini → WS: coaching audio return, horizontal at y=138 -->
+    <!-- Session left=810 → WS right=730, above the forward Mic→WS arrow at y=152 -->
+    <path d="M 810 138 L 730 138"
+          stroke="rgba(163,113,247,0.22)" stroke-width="1.2" fill="none" stroke-dasharray="4,3" marker-end="url(#ag)"/>
+    <text x="735" y="132" font-family="-apple-system, system-ui" font-size="7.5" fill="rgba(163,113,247,0.5)" font-weight="500">← coaching audio</text>
+
+    <!-- 8-9. WS → Browser returns: shared vertical channel at x=276 with two branches -->
+    <!-- Single channel exits WS left at y=178, drops to Audio Output level -->
+    <path d="M 320 178 L 276 178 L 276 572"
+          stroke="rgba(56,139,253,0.18)" stroke-width="1.2" fill="none" stroke-dasharray="4,3"/>
+    <!-- Branch to Dashboard at CY=352 -->
+    <line x1="276" y1="352" x2="252" y2="352"
+          stroke="rgba(56,139,253,0.22)" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#ab)"/>
+    <!-- Branch to Audio Output at CY=572 -->
+    <line x1="276" y1="572" x2="252" y2="572"
+          stroke="rgba(56,139,253,0.22)" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#ab)"/>
+
+    <!-- ═══ FLOW LABELS ═══ -->
+    <!-- Strain→Coaching: horizontal label above the exit segment -->
+    <text x="732" y="543" font-family="-apple-system, system-ui" font-size="7.5" fill="rgba(163,113,247,0.5)" font-weight="500" text-anchor="end">zone · score · duration →</text>
+
+    <!-- Return channel labels (next to branches) -->
+    <text x="258" y="345" font-family="-apple-system, system-ui" font-size="7" fill="rgba(56,139,253,0.45)" font-weight="500" text-anchor="end">strain · pitch</text>
+    <text x="258" y="565" font-family="-apple-system, system-ui" font-size="7" fill="rgba(56,139,253,0.4)" font-weight="500" text-anchor="end">coaching voice</text>
+
+  </svg>
+
+  <div class="foot">Deployed on <span>Google Cloud Run</span> &middot; WebSocket + Session Affinity &middot; 4 GB &middot; 2 vCPU</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{
+  "voice_id": "onwK4e9ZLuTAKqWW03F9",
+  "voice_name": "Daniel - Steady Broadcaster",
+  "clips": [
+    {
+      "id": "vo_01_problem",
+      "duration": 9.055782,
+      "words": 21,
+      "path": "audio/voiceover/vo_01_problem.mp3"
+    },
+    {
+      "id": "vo_02_greeting",
+      "duration": 2.832834,
+      "words": 5,
+      "path": "audio/voiceover/vo_02_greeting.mp3"
+    },
+    {
+      "id": "vo_03_green_tech",
+      "duration": 29.814422,
+      "words": 50,
+      "path": "audio/voiceover/vo_03_green_tech.mp3"
+    },
+    {
+      "id": "vo_04_strain",
+      "duration": 15.696689,
+      "words": 28,
+      "path": "audio/voiceover/vo_04_strain.mp3"
+    },
+    {
+      "id": "vo_05_coaching",
+      "duration": 11.888617,
+      "words": 23,
+      "path": "audio/voiceover/vo_05_coaching.mp3"
+    },
+    {
+      "id": "vo_06_second_cue",
+      "duration": 9.427302,
+      "words": 17,
+      "path": "audio/voiceover/vo_06_second_cue.mp3"
+    },
+    {
+      "id": "vo_07_summary",
+      "duration": 16.439728,
+      "words": 28,
+      "path": "audio/voiceover/vo_07_summary.mp3"
+    },
+    {
+      "id": "vo_08_architecture",
+      "duration": 24.380952,
+      "words": 46,
+      "path": "audio/voiceover/vo_08_architecture.mp3"
+    },
+    {
+      "id": "vo_09_close",
+      "duration": 15.882449,
+      "words": 35,
+      "path": "audio/voiceover/vo_09_close.mp3"
+    }
+  ]
+}

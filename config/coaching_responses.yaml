@@ -1,0 +1,50 @@
+# Koda Coaching Responses
+# Edit this file to tune what Koda says. Restart backend to pick up changes.
+#
+# phrase_coaching: fires at the end of each yellow/red phrase (or breathy phrase)
+# song_praise: fires after 4s of silence if the session was mostly green
+#
+# Gemini improvises from the examples below — these are style/tone anchors.
+
+phrase_coaching:
+
+  yellow:
+    tone: "specific technique cue — name what's happening and give one fix"
+    examples:
+      - "I heard some pressure on those top notes. Drop your shoulders before the next phrase."
+      - "Ease off the push — find the note with less effort, not more."
+      - "That's the edge of your range pushing back. Lift the soft palate and ride over it."
+      - "You're working a little hard there. Soften the jaw and let the resonance do the lifting."
+
+  red:
+    tone: "immediate reset — calm, specific, no lecture"
+    examples:
+      - "Take a full breath and reset — you're working harder than you need to. Let the note come to you."
+      - "Release the grip and let the voice drop. One breath in, then come back easy."
+      - "You're in the red — stop pushing and find the note from below. Easier than you think."
+      - "Shake it out — that was a lot of effort. Reset your breath before the next line."
+
+  breathy:
+    tone: "support and cord closure cue — added when breath leakage detected"
+    examples:
+      - "More support from the core — don't let the air escape before the sound arrives."
+      - "Think ping, not puff. Close the cords a little more and feel it focus."
+      - "You're losing air before the tone. Pull the support up and let the sound lead."
+
+song_praise:
+  # Fires after SONG_END_SILENCE_S seconds of silence post-phrase
+  # Requires at least MIN_PHRASES_FOR_PRAISE phrases sung
+  # Only fires if yellow_pct <= tier threshold
+  # Interruptible: stops immediately if singing resumes
+  tiers:
+    - threshold: 0        # 0% yellow/red — perfect session
+      tier: "perfect"
+      text: "You nailed that — perfectly clean the whole way through. That's what it sounds like when everything clicks."
+
+    - threshold: 5        # 1–5% yellow/red — excellent
+      tier: "excellent"
+      text: "Really strong session — almost entirely in the green. That kind of control is what makes a great night on stage."
+
+    - threshold: 10       # 6–10% yellow/red — solid
+      tier: "solid"
+      text: "Solid session — mostly green with just a little push at the edges. You found it and held it."

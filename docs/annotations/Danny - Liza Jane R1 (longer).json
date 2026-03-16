@@ -1,0 +1,1682 @@
+{
+  "file": "Danny - Liza Jane R1 (longer).m4a",
+  "duration": 67.14,
+  "annotations": [
+    {
+      "t": 5.48,
+      "zone": "yellow",
+      "type": "start"
+    },
+    {
+      "t": 5.67,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 5.85,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 6.04,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 6.22,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 6.41,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 6.59,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 6.78,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 6.97,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 7.15,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 7.34,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 7.52,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 7.71,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 7.89,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 8.08,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 8.27,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 8.45,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 8.64,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 8.82,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 9.01,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 9.2,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 9.38,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 9.57,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 9.75,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 9.94,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 10.12,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 10.31,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 10.5,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 10.68,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 10.87,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 11.05,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 11.24,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 11.42,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 11.61,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 11.8,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 11.98,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 12.17,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 12.35,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 12.54,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 12.72,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 12.91,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 13.1,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 13.28,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 13.47,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 13.65,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 13.84,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 14.02,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 14.21,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 14.4,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 14.58,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 14.77,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 14.95,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 15.14,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 15.33,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 15.51,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 15.7,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 15.88,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 16.07,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 16.25,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 16.44,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 16.63,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 16.81,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 17.0,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 17.18,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 17.37,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 17.55,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 17.74,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 17.93,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 18.11,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 18.3,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 18.48,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 18.67,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 18.85,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 19.04,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 19.23,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 19.41,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 19.6,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 19.78,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 19.97,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 20.15,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 20.34,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 20.53,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 20.71,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 20.9,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 21.08,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 21.27,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 21.46,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 21.64,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 21.83,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 22.01,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 22.2,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 22.38,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 22.57,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 22.76,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 22.94,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 23.13,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 23.31,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 23.5,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 23.68,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 23.87,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 24.06,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 24.24,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 24.43,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 24.61,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 24.8,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 24.98,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 25.17,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 25.36,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 25.54,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 25.73,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 25.91,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 26.1,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 26.28,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 26.47,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 26.66,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 26.84,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 27.03,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 27.21,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 27.4,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 27.59,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 27.77,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 27.96,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 28.14,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 28.33,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 28.51,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 28.7,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 28.89,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 29.07,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 29.26,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 29.44,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 29.63,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 29.81,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 30.0,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 30.19,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 30.37,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 30.56,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 30.74,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 30.93,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 31.11,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 31.3,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 31.49,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 31.67,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 31.86,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 32.04,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 32.23,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 32.42,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 32.6,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 32.79,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 32.97,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 33.16,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 33.34,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 33.53,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 33.72,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 33.9,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 34.09,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 34.27,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 34.46,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 34.64,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 34.83,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 35.02,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 35.2,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 35.39,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 35.57,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 35.76,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 35.94,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 36.13,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 36.32,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 36.5,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 36.69,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 36.87,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 37.06,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 37.24,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 37.43,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 37.62,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 37.8,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 37.99,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 38.17,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 38.36,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 38.55,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 38.73,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 38.92,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 39.1,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 39.29,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 39.47,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 39.66,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 39.85,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 40.03,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 40.22,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 40.4,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 40.59,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 40.77,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 40.96,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 41.15,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 41.33,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 41.52,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 41.7,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 41.89,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 42.07,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 42.26,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 42.45,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 42.63,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 42.82,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 43.0,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 43.19,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 43.37,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 43.56,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 43.75,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 43.93,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 44.12,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 44.3,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 44.49,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 44.68,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 44.86,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 45.05,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 45.23,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 45.42,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 45.6,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 45.79,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 45.98,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 46.16,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 46.35,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 46.53,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 46.72,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 46.9,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 47.09,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 47.28,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 47.46,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 47.65,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 47.65,
+      "zone": "red",
+      "type": "change"
+    },
+    {
+      "t": 47.83,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 48.02,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 48.2,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 48.39,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 48.58,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 48.76,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 48.95,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 49.13,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 49.32,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 49.5,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 49.69,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 49.88,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 50.06,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 50.25,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 50.43,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 50.62,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 50.81,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 50.99,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 51.18,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 51.36,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 51.55,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 51.64,
+      "zone": "yellow",
+      "type": "change"
+    },
+    {
+      "t": 51.83,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 52.01,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 52.2,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 52.38,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 52.57,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 52.76,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 52.94,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 53.13,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 53.31,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 53.5,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 53.5,
+      "zone": "red",
+      "type": "change"
+    },
+    {
+      "t": 53.68,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 53.87,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 54.06,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 54.24,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 54.43,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 54.61,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 54.8,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 54.98,
+      "zone": "red",
+      "type": "auto"
+    },
+    {
+      "t": 55.08,
+      "zone": "yellow",
+      "type": "change"
+    },
+    {
+      "t": 55.26,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 55.45,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 55.64,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 55.82,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 56.01,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 56.19,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 56.38,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 56.56,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 56.75,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 56.94,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 57.12,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 57.31,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 57.49,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 57.68,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 57.86,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 58.05,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 58.24,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 58.42,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 58.61,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 58.79,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 58.98,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 59.16,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 59.35,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 59.54,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 59.72,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 59.91,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 60.09,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 60.28,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 60.46,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 60.65,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 60.84,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 61.02,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 61.21,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 61.39,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 61.58,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 61.77,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 61.95,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 62.14,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 62.32,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 62.51,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 62.69,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 62.88,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 63.07,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 63.25,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 63.44,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 63.62,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 63.81,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 63.99,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 64.18,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 64.37,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 64.55,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 64.74,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 64.92,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 65.11,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 65.29,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 65.48,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 65.67,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 65.85,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 66.04,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 66.22,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 66.41,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 66.59,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 66.78,
+      "zone": "yellow",
+      "type": "auto"
+    },
+    {
+      "t": 66.97,
+      "zone": "yellow",
+      "type": "auto"
+    }
+  ],
+  "created": "2026-03-12 19:31:40"
+}
