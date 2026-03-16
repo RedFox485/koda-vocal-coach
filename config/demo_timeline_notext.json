@@ -19,22 +19,20 @@
         "_note": "DJI Pocket 2 \u2014 Daniel singing into phone, Koda UI visible, great energy"
       },
       {
-        "id": "shot2_tap_transition",
-        "source": "video/captures/tap_transition.mp4",
+        "id": "shot2_start_screen",
+        "source": "video/captures/shot2_start.png",
         "timeline_start": 3.0,
-        "timeline_end": 12.0,
-        "source_in": 0.5,
-        "source_out": 9.5,
-        "_note": "Start screen \u2192 finger tap on Enable Microphone \u2192 dashboard loads. Interactive feel."
+        "timeline_end": 7.0,
+        "_note": "Koda start screen, shorter (4s). Voiceover plays over this."
       },
       {
-        "id": "shot3_dashboard_settle",
+        "id": "shot3_dashboard",
         "source": "video/captures/take_02.mp4",
-        "timeline_start": 12.0,
+        "timeline_start": 7.0,
         "timeline_end": 20.0,
-        "source_in": 8.0,
+        "source_in": 3.0,
         "source_out": 16.0,
-        "_note": "Dashboard settled, UI active, ready for singing to begin"
+        "_note": "Dashboard loads and settles. Shows interactive UI earlier \u2014 less slideshow feel."
       },
       {
         "id": "shot4_green_zone",
@@ -93,9 +91,9 @@
         "source": "video/captures/take_02.mp4",
         "timeline_start": 140.0,
         "timeline_end": 148.0,
-        "source_in": 185.0,
-        "source_out": 187.0,
-        "_note": "Final UI state \u2014 full session visible"
+        "source_in": 180.0,
+        "source_out": 188.0,
+        "_note": "Final UI state \u2014 full session visible (8s matches timeline duration)"
       },
       {
         "id": "shot8b_title_card",
@@ -109,7 +107,7 @@
       {
         "id": "vo_01_problem",
         "source": "audio/voiceover_v2/vo_01_problem.mp3",
-        "timeline_start": 3.5,
+        "timeline_start": 0.5,
         "group": "voiceover",
         "priority": 1,
         "fade_in": 0.1,
@@ -160,14 +158,14 @@
       {
         "id": "vo_08_architecture",
         "source": "audio/voiceover_v2/vo_08_architecture.mp3",
-        "timeline_start": 125.0,
+        "timeline_start": 114.0,
         "group": "voiceover",
         "priority": 1
       },
       {
         "id": "vo_09_close",
         "source": "audio/voiceover_v2/vo_09_close.mp3",
-        "timeline_start": 147.0,
+        "timeline_start": 133.0,
         "group": "voiceover",
         "priority": 1,
         "fade_out": 0.5
@@ -188,24 +186,6 @@
           "duck_attack": 0.3,
           "duck_release": 0.5
         }
-      },
-      {
-        "id": "background_beat",
-        "source": "audio/background_beat.wav",
-        "timeline_start": 18.0,
-        "timeline_end": 98.0,
-        "source_in": 0.0,
-        "source_out": 80.0,
-        "group": "music",
-        "priority": 4,
-        "volume": {
-          "default": 0.12,
-          "duck_under": "voiceover",
-          "duck_level": 0.04,
-          "duck_attack": 0.3,
-          "duck_release": 0.5
-        },
-        "_note": "143.5 BPM drum beat matching singer tempo. Very quiet, adds pulse and energy."
       },
       {
         "id": "gemini_greeting",

@@ -9,7 +9,7 @@ Koda listens to you sing, detects vocal strain in real-time using multiple paral
 Built for the Gemini Live Agent Challenge.
 
 🔗 Try it: https://koda-vocal-coach-358494904628.us-central1.run.app
-📝 Technical deep-dive: [dev.to link]
+📝 Technical deep-dive: [dev.to link — update after publishing]
 💻 Source code: https://github.com/RedFox485/koda-vocal-coach
 
 How it works:

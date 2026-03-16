@@ -71,4 +71,4 @@ Koda listens to you sing through your phone's microphone and provides real-time 
 - **Live app**: https://koda-vocal-coach-358494904628.us-central1.run.app
 - **Source code**: https://github.com/RedFox485/koda-vocal-coach
 - **Blog post**: [dev.to link — add after publishing]
-- **Demo video**: [YouTube link — add after upload]
+- **Demo video**: https://youtube.com/watch?v=iGvEHY5oIHA

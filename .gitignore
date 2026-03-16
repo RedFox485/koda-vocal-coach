@@ -49,3 +49,5 @@ video/
 
 # Claude session data
 docs/SESSION-STATE*.md
+client_secret*.json
+.youtube_token.json
