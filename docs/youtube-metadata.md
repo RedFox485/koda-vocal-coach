@@ -10,6 +10,7 @@ Built for the Gemini Live Agent Challenge.
 
 🔗 Try it: https://koda-vocal-coach-358494904628.us-central1.run.app
 📝 Technical deep-dive: [dev.to link]
+💻 Source code: https://github.com/RedFox485/koda-vocal-coach
 
 How it works:
 • Browser captures mic audio over WebSocket at 10Hz

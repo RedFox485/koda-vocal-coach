@@ -19,20 +19,22 @@
         "_note": "DJI Pocket 2 \u2014 Daniel singing into phone, Koda UI visible, great energy"
       },
       {
-        "id": "shot2_start_screen",
-        "source": "video/captures/shot2_start.png",
+        "id": "shot2_tap_transition",
+        "source": "video/captures/tap_transition.mp4",
         "timeline_start": 3.0,
         "timeline_end": 12.0,
-        "_note": "Koda start screen, idle state"
+        "source_in": 0.5,
+        "source_out": 9.5,
+        "_note": "Start screen \u2192 finger tap on Enable Microphone \u2192 dashboard loads. Interactive feel."
       },
       {
-        "id": "shot3_greeting",
+        "id": "shot3_dashboard_settle",
         "source": "video/captures/take_02.mp4",
         "timeline_start": 12.0,
         "timeline_end": 20.0,
-        "source_in": 3.0,
-        "source_out": 11.0,
-        "_note": "Dashboard appears after Watch click, audio begins"
+        "source_in": 8.0,
+        "source_out": 16.0,
+        "_note": "Dashboard settled, UI active, ready for singing to begin"
       },
       {
         "id": "shot4_green_zone",
@@ -182,10 +184,28 @@
         "volume": {
           "default": 0.8,
           "duck_under": "voiceover",
-          "duck_level": 0.3,
+          "duck_level": 0.1,
           "duck_attack": 0.3,
           "duck_release": 0.5
         }
+      },
+      {
+        "id": "background_beat",
+        "source": "audio/background_beat.wav",
+        "timeline_start": 18.0,
+        "timeline_end": 98.0,
+        "source_in": 0.0,
+        "source_out": 80.0,
+        "group": "music",
+        "priority": 4,
+        "volume": {
+          "default": 0.12,
+          "duck_under": "voiceover",
+          "duck_level": 0.04,
+          "duck_attack": 0.3,
+          "duck_release": 0.5
+        },
+        "_note": "143.5 BPM drum beat matching singer tempo. Very quiet, adds pulse and energy."
       },
       {
         "id": "gemini_greeting",
